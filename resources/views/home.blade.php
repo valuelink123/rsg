@@ -73,6 +73,11 @@
 										
 									</select>
 								</div>
+                                <div class="margin-top-40 pull-right" style="margin-left:60px;">
+                                    <div id="home-rule" class="btn btn-outline red btn-circle">
+                                        {!! trans('custom.home-rule') !!}
+                                    </div>
+                                </div>
 								<div class="margin-top-40 pull-right">
 									<form action="{{url(App::getLocale().'/getrsg')}}" method="post" target="modal-iframe">
 										{{ csrf_field() }}
@@ -92,8 +97,14 @@
 							</div>
 							
 							<!-- END PAGE TITLE-->
-                            <div class="col-md-12">
+                            <div class="col-md-6" style="margin-left:250px;">
                                 {!! trans('custom.home-freeproduct') !!}
+                            </div>
+
+                            <div id="home-rule1" style="display:none;">
+                                <div class="rule-div">
+                                    <div class="rule-content">{!! trans('custom.home-rule1') !!}</div>
+                                </div>
                             </div>
                         </div>
                         <!-- END CONTENT HEADER -->
@@ -350,6 +361,35 @@ Email: marketing@claimthegift.com<BR>
 		  </div>
 		</script>
 
+        <input type="hidden" id="from" value="{!! $from !!}">
+
+        <script type="text/template" id="modal-success">
+            <div class="modal centered-modal" id="" tabindex="-1" role="dialog" aria-labelledby="success-title">
+                <div class="success-dialog success-vertical-centered" role="document" >
+                    <div class="success-content">
+                        <div class="success-header">
+                            <div class="header-content">Finish 100%!</div>
+                        </div>
+                        <div class="">
+                            <div class="body-content">
+                                Thank you for sharing your experience!<br>
+
+                                You can expect your free gift in 4-6 days!
+                            </div>
+                            <div class="body-content">
+                                Would you also like to test and keep the products for free?<br>
+
+                                It is only eligible for our regular customer like you!
+                            </div>
+                        </div>
+                        <div class="modal-bottom">
+                            <button type="button" class="submit success-submit" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Choose one to test now!</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+
         <!--[if lt IE 9]>
 <script src="/assets/global/plugins/respond.min.js"></script>
 <script src="/assets/global/plugins/excanvas.min.js"></script> 
@@ -391,6 +431,26 @@ Email: marketing@claimthegift.com<BR>
 			modal.find('iframe').show();
 		  });
 		}
+
+		function showModalSuccess(title) {
+            var width ="100%";
+            var height = "100%";
+            var modal = $(_.template($('#modal-success').html())({
+                width: width,
+                height: height
+            })).modal({
+                show: true,
+                keyboard: true,
+            }).on('hidden.bs.modal', function() {
+                $(this).find('iframe').html("").attr("src", "");
+            });
+            modal.find('iframe').hide();
+            modal.find('#iframe-loading').show();
+            modal.find('iframe').on("load", function() {
+                modal.find('#iframe-loading').hide();
+                modal.find('iframe').show();
+            });
+        }
 		
 		$(function() {
 		  $('body').on('click', 'button.trigger-modal', function() {
@@ -398,6 +458,20 @@ Email: marketing@claimthegift.com<BR>
 			showModal($(this).text(), $(this).attr('data-width'), $(this).attr('data-height')):
 			  alert('"showModal" is not available.');
 		  });
+		  var from = $('#from').val();
+		  if(from=='ctg'){
+              showModalSuccess();
+          }
+
+		    //rule按钮点击事件，点击显示隐藏规则介绍步骤
+		    $('body').on('click','#home-rule',function(){
+                var display = $('#home-rule1').css('display');
+                if(display == 'none'){
+                   $('#home-rule1').show();
+                }else{
+                    $('#home-rule1').hide();
+                }
+		    });
 		 
 		  
 		  //showModal('Notice','50%','60%');

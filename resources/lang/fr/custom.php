@@ -103,5 +103,23 @@ Règles : <BR>
 	
 	'home-q6'     => 'J\'ai postulé avec succès pour la promotion mais je n\'ai pas reçu les fonds ou le produit. À qui puis-je demander de l’aide ?',
 	'home-a6'     => 'Il suffit de nous contacter via notre email officiel : marketing@claimthegift.com, nous vous répondrons dans les meilleurs délais. ',
+
+	'home-rule' 		  => 'Rules & Instructions',
+	'home-rule1' =>'
+Steps:<BR>
+1.Give us your Paypal account-Share your Paypal account information to receive a deposit equivalent to the full purchase price.<BR>
+2.Buy it on our online store-Place an order on our online store and send us your Order ID.<BR>
+3.Review it on the product page-Leave a written review on the product page within 3 days of receiving the product.<BR>
+4.Share your review link:Send us a link to your posted review.<BR><BR>
+
+Rules:<BR>
+1.This event is for U.S. residents only.<BR>
+2.Place the order within 2 days of receiving the funds.<BR>
+3.Leave a review on the respective product page within 3 days of receiving the product.<BR>
+4.The full purchasing deposit will be transferred via Paypal only.<BR>
+5.Each individual may participate only once, unless extended an additional invitation via email.<BR>
+6.Any activity found to be in violation of these rules will result in the participant being placed on our blacklist and forbidden from participating in any similar promotional activities in the future.<BR>
+7.CTG reserves the right of final decision.<BR>
+',
 	
 ];

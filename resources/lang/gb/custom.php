@@ -96,15 +96,33 @@ Rules:<BR>
 	'home-a2'     => 'The daily quota for each product is fixed. However, you can try to apply for it the following day.',
 	
 	'home-q3'     => 'I successfully applied for the promotion but did not receive the funds or product. Who can I ask for help?',
-	'home-a3'     => 'Simply contact our official email:marketing@claimthegift.com, we will respond as soon as possible.',
+	'home-a3'     => 'Simply contact us through the live chat or messenger. If there is no agent available for the moment, you can send an email to marketing@claimthegift.com, we will respond as soon as possible.',
 	
 	'home-q4'     => 'I don’t have a Paypal account, can I participate in this event?',
 	'home-a4'     => 'We apologize, but we are only able to transfer the funds for purchase via Paypal.',
 	
 	'home-q5'     => 'Can I participate in this event multiple times?',
-	'home-a5'     => 'No, each individual may only participant once in a given event, unless we extend an additional invitation to him/her.',
+	'home-a5'     => 'If you want to participate again, please follow us on our Facebook Page, and message us your Amazon Profile ID, we will invite you for further free testing.',
 	
 	'home-q6'     => 'How many free products can I apply for at one time?',
 	'home-a6'     => 'Only one product can be selected at a time',
+
+	'home-rule' 		  => 'Rules & Instructions',
+	'home-rule1' =>'
+Steps:<BR>
+1.Give us your Paypal account-Share your Paypal account information to receive a deposit equivalent to the full purchase price.<BR>
+2.Buy it on our online store-Place an order on our online store and send us your Order ID.<BR>
+3.Review it on the product page-Leave a written review on the product page within 3 days of receiving the product.<BR>
+4.Share your review link:Send us a link to your posted review.<BR><BR>
+
+Rules:<BR>
+1.This event is for U.S. residents only.<BR>
+2.Place the order within 2 days of receiving the funds.<BR>
+3.Leave a review on the respective product page within 3 days of receiving the product.<BR>
+4.The full purchasing deposit will be transferred via Paypal only.<BR>
+5.Each individual may participate only once, unless extended an additional invitation via email.<BR>
+6.Any activity found to be in violation of these rules will result in the participant being placed on our blacklist and forbidden from participating in any similar promotional activities in the future.<BR>
+7.CTG reserves the right of final decision.<BR>
+',
 	
 ];

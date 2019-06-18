@@ -41,6 +41,7 @@ class HomeController extends Controller
 			'es'=>'www.amazon.es',
 			'jp'=>'www.amazon.co.jp',
 		);
+		$from = isset($_REQUEST['from']) ? $_REQUEST['from'] : '';
 		
 		$site = array_get($lang_arr,strtolower(App::getLocale()??'en'),'www.amazon.com');
 
@@ -49,7 +50,7 @@ class HomeController extends Controller
 		if($count<8){
 			$un_produsts = RsgProduct::where('status',1)->where('site',$site)->where('daily_remain','<=',0)->where('start_date','<=',$date)->where('end_date','>=',$date)->inRandomOrder()->take(8-$count)->get()->toArray();
 		}
-		return view('home',['customer_email'=>$customer_email,'products'=>array_merge($produsts,$un_produsts)]);
+		return view('home',['customer_email'=>$customer_email,'products'=>array_merge($produsts,$un_produsts),'from'=>$from]);
     }
 	
 	public function getrsg(Request $request){
