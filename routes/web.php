@@ -17,4 +17,6 @@ Route::get('/notice', 'HomeController@notice')->name('notice');
 Route::Post('/getrsg', 'HomeController@getrsg')->name('getrsg');
 Route::get('/{customer_email?}', 'HomeController@index')->name('home');
 
+Route::get('/product/detail', 'ProductController@detail')->name('detail');
+
 

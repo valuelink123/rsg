@@ -77,6 +77,7 @@ Regole:<BR>
 	'home-freeproduct'     => '<h1>Prova i nostri prodotti gratis!</h1><h2>Il nostro prodotto gratis aspetta solo te, è sufficiente registrarsi per iniziare!</h2>',
 	'home-left'     => 'surplus', //剩下多少
 	'home-AVAILABLE'     => 'DISPONIBILI',
+	'home-Available'     => 'Available',
 	'home-wantit'     => 'LO VOGLIO',
 	'home-Comming'     => 'Prossimamente...',
 	'home-s1'     => 'Ottieni un prodotto gratis 		 			',

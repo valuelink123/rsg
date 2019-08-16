@@ -86,6 +86,7 @@ Regeln:<BR>
 	'home-freeproduct'     => '<h1>Testen Sie kostenlos unsere Produkte! </h1><h2>Ihr kostenloses Produkt wartet bereits auf Sie. Registrieren Sie sich und legen Sie los!</h2>',
 	'home-left'     => 'Übrig', //剩下多少
 	'home-AVAILABLE'     => 'VERFÜGBAR',
+	'home-Available'     => 'Available',
 	'home-wantit'     => 'ICH WILL ES',
 	'home-Comming'     => 'Demnächst...',
 	'home-s1'     => 'Erhalten Sie ein kostenloses Produkt     ',

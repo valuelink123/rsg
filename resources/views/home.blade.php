@@ -121,8 +121,11 @@
 							@foreach($products as $product)
                             <div class="col-lg-3 col-md-6">
                                 <div class="portlet light">
+                                    <a href="/product/detail?id={{$product['id']}}" target="_blank">
                                     <div class="photo">
-                                       <!--<a href="https://{{array_get($product,'site')}}/dp/{{array_get($product,'asin')}}?m={{array_get($product,'seller_id')}}" target="_blank">--> <img src="{{array_get($product,'product_img')}}" alt="" class="img-responsive" /><!--</a>--> </div>
+                                       <!--<a href="https://{{array_get($product,'site')}}/dp/{{array_get($product,'asin')}}?m={{array_get($product,'seller_id')}}" target="_blank">--> <img src="{{array_get($product,'product_img')}}" alt="" class="img-responsive" /><!--</a>-->
+                                    </div>
+                                    </a>
 									<div class="progress-info">
                                         <div class="progress">
                                             <span style="width: {{intval(array_get($product,'daily_remain')/array_get($product,'daily_stock')*100)}}%;" class="progress-bar progress-bar-success red-haze">

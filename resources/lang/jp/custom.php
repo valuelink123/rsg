@@ -80,6 +80,7 @@ CTG Team',
 	'home-freeproduct'     => '<h1>モニター募集＆サンプルプレゼント</h1><h2>無料で弊社の最新商品を試用することができます。いますぐゲットしましょう！</h2>',
 	'home-left'     => '残り', //剩下多少
 	'home-AVAILABLE'     => '点',
+	'home-Available'     => 'Available',
 	'home-wantit'     => '試用したい',
 	'home-Comming'     => '近日公開...',
 	'home-s1'     => 'サンプルプレゼント',

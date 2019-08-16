@@ -84,6 +84,7 @@ Rules:<BR>
 	'home-freeproduct'     => '<h1>FREE PRODUCT TESTER</h1><h2>A free product is ready for you, join us to get it!</h2>',
 	'home-left'     => 'left', //剩下多少
 	'home-AVAILABLE'     => 'AVAILABLE',
+	'home-Available'     => 'Available',
 	'home-wantit'     => 'I WANT IT',
 	'home-Comming'     => 'Comming Soon...',
 	'home-s1'     => 'Get a Free Product',
