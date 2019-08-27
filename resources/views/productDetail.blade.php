@@ -48,18 +48,18 @@
     .product{
         background-color: #fff;
     }
-    .product-top img{
-        width:480px;
-        height:480px;
-    }
+    /*.product-top img{*/
+        /*width:480px;*/
+        /*height:480px;*/
+    /*}*/
     .content{
         border:1px solid #EEEEEE;
         margin-top:10px;
-        margin-left: 159px;
+        /*margin-left: 159px;*/
     }
-    .product .product-top .product-top-right{
-        margin-left:20px;
-    }
+    /*.product .product-top .product-top-right{*/
+        /*margin-left:20px;*/
+    /*}*/
     .product-top .product-right-summary{
         font-size: 16px;
         font-weight: 400;
@@ -84,6 +84,9 @@
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         overflow: hidden;
+    }
+    .product-detail-son ul{
+        width:100% !important;
     }
 </style>
 <body class=" page-sidebar-closed-hide-logo page-container-bg-solid page-content-white">
@@ -111,55 +114,45 @@
                 <!-- BEGIN CONTENT HEADER -->
                 <div class="row margin-bottom-40 about-header">
                     <!-- BEGIN PAGE TITLE-->
-                    <div class="col-md-10 col-md-offset-1" style="text-align:left;">
-                        <img src="/assets/pages/img/logo.png">
-                        <div class="margin-top-40 pull-right" style="margin-left:30px;">
-                            <select class="form-control btn btn-circle red btn-outline" onChange="location.href='/'+this.value" >
+                    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 " >
+                        <div class="col-md-3 col-sm-2 col-xs-4 col-lg-1 " style="float:left;"><img src="/assets/pages/img/logo.png"></div>
+                        <div class="col-md-8 col-sm-10 col-xs-8 col-lg-11 margin-top-30" style="float:right;">
 
-								<?php
-								$langs = config('app.locales');
-								foreach($langs as $k=>$v){
-								?>
-                                <option value='{{$k}}' @if(App::getLocale() == $k) selected @else @endif >{{$v}}</option>
-								<?php
-								}
-								?>
 
-                            </select>
-                        </div>
-                        <div class="margin-top-40 pull-right" style="margin-left:60px;">
-                            <div id="home-rule" class="btn btn-outline red btn-circle">
-                                {!! trans('custom.home-rule') !!}
+                            <div class="col-md-3 col-sm-3 col-xs-8 col-lg-1" style="float:right;margin-bottom:10px;">
+                                <select class="form-control btn btn-circle red btn-outline" onChange="location.href='/'+this.value" >
+
+									<?php
+									$langs = config('app.locales');
+									foreach($langs as $k=>$v){
+									?>
+                                    <option value='{{$k}}' @if(App::getLocale() == $k) selected @else @endif >{{$v}}</option>
+									<?php
+									}
+									?>
+
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 col-sm-5 col-xs-12 col-lg-2" style="float:right;">
+                                <form action="{{url(App::getLocale().'/getrsg')}}" method="post" target="modal-iframe">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="product_id" value="0">
+                                    <input type="hidden" name="customer_email" value="{{$customer_email}}">
+                                    <button type="submit" class="btn btn-circle red btn-outline trigger-modal" role="button" data-width="50%" data-height="60%" style="float: right;">
+                                        @if($customer_email)
+                                            {!! trans('custom.home-myproduct') !!}
+                                        @else
+                                            {!! trans('custom.home-join') !!}
+                                        @endif
+                                    </button>
+                                </form>
+
                             </div>
                         </div>
-                        <div class="margin-top-40 pull-right">
-                            <form action="{{url(App::getLocale().'/getrsg')}}" method="post" target="modal-iframe">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="product_id" value="0">
-                                <input type="hidden" name="customer_email" value="{{$customer_email}}">
-                                <button type="submit" class="btn btn-circle red btn-outline trigger-modal" role="button" data-width="50%" data-height="60%">
-                                    @if($customer_email)
-                                        {!! trans('custom.home-myproduct') !!}
-                                    @else
-                                        {!! trans('custom.home-join') !!}
-                                    @endif
-                                </button>
-                            </form>
-
-                        </div>
-
                     </div>
 
                     <!-- END PAGE TITLE-->
-                    <div class="col-md-6" style="margin-left:250px;">
-                        {!! trans('custom.home-freeproduct') !!}
-                    </div>
-
-                    <div id="home-rule1" style="display:none;">
-                        <div class="rule-div">
-                            <div class="rule-content">{!! trans('custom.home-rule1') !!}</div>
-                        </div>
-                    </div>
                 </div>
                 <!-- END CONTENT HEADER -->
 
@@ -167,19 +160,23 @@
                 @if($data)
                 <div class="product margin-bottom-20 col-md-12">
                     <div class="product-top col-md-offset-1 col-md-10">
-                        <div class="product-top-left col-md-4">
-                        <img class="" src="{{$data['product_img']}}">
+                        <div class="product-top-left col-md-4 col-xs-5">
+                        <img class="col-md-12 col-xs-12" src="{{$data['product_img']}}">
                         </div >
                         <div class="product-top-right col-md-7 ">
                             <div class="product-right-title">
                                 <h3><b>{{$data['product_name']}}</b></h3>
                             </div>
                             <div class="product-right-price">
-                                <span style="font-size:18px;">Price:</span>
-                                <span style="font-size:24px;">${{$data['price']}}</span>
-                                <span  style="margin-left:30px;font-size:24px;">{{array_get($data,'daily_remain')}}</span><span style="font-size:18px;">  {!! trans('custom.home-Available') !!} </span>
+                                <div class="col-xs-12 col-md-3">
+                                    <span style="font-size:18px;">Price:</span>
+                                    <span style="font-size:24px;">${{$data['price']}}</span>
+                                </div>
+                                <div class="col-xs-12 col-md-3">
+                                    <span  style="font-size:24px;">{{array_get($data,'daily_remain')}}</span><span style="font-size:18px;">  {!! trans('custom.home-Available') !!} </span>
+                                </div>
                             </div>
-                            <div class="product-right-button">
+                            <div class="product-right-button col-md-12">
                                 @if (array_get($data,'daily_remain')>0)
                                     <form action="{{url(App::getLocale().'/getrsg')}}" method="post" target="modal-iframe">
                                         {{ csrf_field() }}
@@ -541,6 +538,16 @@
                     $('#home-rule1').hide();
                 }
 		    });
+
+            //获取当前屏幕的宽度，根据宽度设置特殊样式
+            var width = document.body.clientWidth;
+            if(width<=768){
+                $('.product-detail-son .content img').css('width','100%');
+                $('.product-detail-son .content table').css('width','100%');
+            }else{
+                $('.product-detail-son .content').css('margin-left','159px');
+            }
+
 
 
 		  //showModal('Notice','50%','60%');
