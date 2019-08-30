@@ -164,20 +164,41 @@
         //获取当前屏幕的宽度，根据宽度设置特殊样式
         var width = document.body.clientWidth;
         if(width<768){
-            //首页和详情页的公共部分
-            $('.about-header').css('height','100px');
-            $('.logo').css('height','70px');
-            $('.top-menu').removeClass('margin-top-30');
-            $('.top-menu').addClass('margin-top-10');
-            $('.bottom-banner .card-title span').css('font-size','12px');
-            $('.bottom-banner .portlet .card-icon img').css('width','100%');
-            $('.bottom-banner .portlet.light').css('padding','0px');
-            $('.bottom-banner .portlet.light').css('margin-bottom','0px');
-            $('.bottom-banner .portlet.light').css('margin-top','-20px');
-            $('.bottom-banner .portlet.light').css('height','128px');
-            $('.bottom-banner .portlet .card-title').removeClass('margin-top-20');
-            $('.bottom-banner .portlet .card-title').addClass('margin-top-10');
-        }
+                $('.product-detail-son .content img').css('width','100%');
+                $('.product-detail-son .content table').css('width','100%');
+
+                $('.product-top .product-right-price .price-price').css('font-size','14px');
+                $('.product-top .product-right-price .price-amount').css('font-size','20px');
+                $('.product-top .product-right-price .available-number').css('font-size','20px');
+                $('.product-top .product-right-price .available-avail').css('font-size','14px');
+                $('.product-top').css('padding-left','0px');
+                $('.product-top').css('padding-right','0px');
+                $('.product-detail-son').css('padding-left','2px');
+                $('.product-detail-son').css('padding-right','2px');
+                $('.product-top-left').css('padding-left','0px');
+                $('.product-top-left').css('padding-right','0px');
+                $('.product-top-right').css('padding-left','0px');
+                $('.product-top-right').css('padding-right','0px');
+                $('.product .product-right-title').css('font-size','12px');
+
+                //首页和详情页的公共部分
+                $('.about-header').css('height','100px');
+                $('.logo').css('height','70px');
+                $('.top-menu').removeClass('margin-top-30');
+                $('.top-menu').addClass('margin-top-10');
+                $('.bottom-banner .card-title span').css('font-size','12px');
+                $('.bottom-banner .portlet .card-icon img').css('width','100%');
+                $('.bottom-banner .portlet.light').css('padding','0px');
+                $('.bottom-banner .portlet.light').css('margin-bottom','0px');
+                $('.bottom-banner .portlet.light').css('margin-top','-20px');
+                $('.bottom-banner .portlet.light').css('height','128px');
+                $('.bottom-banner .portlet .card-title').removeClass('margin-top-20');
+                $('.bottom-banner .portlet .card-title').addClass('margin-top-10');
+
+
+            }else{
+                $('.product-detail-son .content').css('margin-left','159px');
+            }
 
         //showModal('Notice','50%','60%');
         //$('#modal-iframe').attr("src", "{{url('notice')}}");
