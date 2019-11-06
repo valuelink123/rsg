@@ -40,6 +40,13 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "files":[
+            "app/Tools/PHPMailer/PHPMailer/Exception.php",
+            "app/Tools/PHPMailer/PHPMailer/OAuth.php",
+            "app/Tools/PHPMailer/PHPMailer/PHPMailer.php",
+            "app/Tools/PHPMailer/PHPMailer/POP3.php",
+            "app/Tools/PHPMailer/PHPMailer/SMTP.php"
         ]
     },
     "autoload-dev": {

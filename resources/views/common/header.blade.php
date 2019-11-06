@@ -1,13 +1,10 @@
 <div class="row margin-bottom-20 about-header">
     <!-- BEGIN PAGE TITLE-->
     <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 " >
-        <div class="col-md-3 col-sm-2 col-xs-4 col-lg-1 " style="float:left;"><img class="logo" src="/assets/pages/img/logo.png"></div>
-        <div class="col-md-8 col-sm-10 col-xs-8 col-lg-11 margin-top-30 top-menu" style="float:right;">
-
-
-            <div class="col-md-3 col-sm-3 col-xs-8 col-lg-1" style="float:right;margin-bottom:10px;">
+        <div class="col-md-3 col-sm-2 col-xs-2 col-lg-1 " style="float:left;"><img class="logo" src="/assets/pages/img/logo.png"></div>
+        <div class="col-md-9 col-sm-10 col-xs-10 col-lg-11 margin-top-30 top-menu" style="float:right;">
+            <div class="col-xs-7 col-sm-3 col-md-3 col-lg-2" style="float:right;margin-bottom:5px;">
                 <select class="form-control btn btn-circle red btn-outline" onChange="location.href='/'+this.value" >
-
 					<?php
 					$langs = config('app.locales');
 					foreach($langs as $k=>$v){
@@ -20,7 +17,7 @@
                 </select>
             </div>
 
-            <div class="col-md-4 col-sm-5 col-xs-12 col-lg-2" style="float:right;">
+            <!-- <div class="col-md-4 col-sm-5 col-xs-12 col-lg-2" style="float:right;">
                 <form action="{{url(App::getLocale().'/getrsg')}}" method="post" target="modal-iframe">
                     {{ csrf_field() }}
                     <input type="hidden" name="product_id" value="0">
@@ -34,9 +31,27 @@
                     </button>
                 </form>
 
+            </div> -->
+
+            <div class="col-xs-7 col-sm-3 col-md-2 col-lg-1" style="float:right;margin-bottom:5px;">
+                <form action="{{url(App::getLocale().'/signup')}}" method="post" target="modal-iframe">
+                    {{ csrf_field() }}
+                    <button type="submit" id="signup_button" class="btn btn-circle red btn-outline trigger-modal" role="button" data-width="50%" data-height="60%" style="float:right;width:100%">
+                        Sign Up
+                    </button>
+                </form>
+            </div>
+            <div class="col-xs-7 col-sm-3 col-sm-offset-3 col-md-2 col-md-offset-5 col-lg-1 col-lg-offset-8" style="float:right;margin-bottom:5px;">
+                <form action="{{url(App::getLocale().'/signin')}}" method="post" target="modal-iframe">
+                    {{ csrf_field() }}
+                    <button type="submit" id="signin_button" class="btn btn-circle red btn-outline trigger-modal" role="button" data-width="50%" data-height="60%" style="float:right;width:100%">
+                        Sign In
+                    </button>
+                </form>
             </div>
         </div>
     </div>
 
     <!-- END PAGE TITLE-->
 </div>
+

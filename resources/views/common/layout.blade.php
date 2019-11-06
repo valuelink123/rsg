@@ -36,10 +36,10 @@
     <div class="modal centered-modal" id="dynamicallyInjectedModal" tabindex="-1" role="dialog" aria-labelledby="modal-title">
         <div class="modal-dialog modal-vertical-centered" role="document" style="width:<%= width %>;height:<%= height %>;">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<!--            <div class="modal-header">-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+<!--            </div>-->
 
-            </div>
             <div class="modal-body">
                 <div id="iframe-loading" class="text-muted small" style="display:none; text-align:center;"><img src="/assets/pages/img/loading.gif"></div>
                 <iframe id="modal-iframe" name="modal-iframe" frameborder="0"></iframe>
@@ -163,6 +163,22 @@
 
         //获取当前屏幕的宽度，根据宽度设置特殊样式
         var width = document.body.clientWidth;
+
+        if(width >= 960){
+            $('#signup_button').attr('data-width', '858px');
+            $('#signup_button').attr('data-height', '515px');
+
+            $('#signin_button').attr('data-width', '774px');
+            $('#signin_button').attr('data-height', '432px');
+        }
+        else{
+            $('#signup_button').attr('data-width', '332px');
+            $('#signup_button').attr('data-height', '515px');
+
+            $('#signin_button').attr('data-width', '332px');
+            $('#signin_button').attr('data-height', '432px');
+        }
+
         if(width<768){
                 $('.product-detail-son .content img').css('width','100%');
                 $('.product-detail-son .content table').css('width','100%');

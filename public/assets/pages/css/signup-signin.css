@@ -1,0 +1,69 @@
+.hide_scrollbar{
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.signup_img_size_adjustment{
+    width:524px;
+    /*height:auto;*/
+}
+.signin_img_size_adjustment{
+    width:440px;
+    /*height:auto;*/
+}
+.right_side_size{
+    width:332px;
+    height:auto;
+}
+.signin_signup_text {
+    color:#ff6400;
+    font-size:20px;
+    font-weight: bold;
+    text-align:center;
+    width:100%;
+    height:auto;
+    padding-bottom:20px;
+}
+.label_margin_top {
+    margin-top:20px;
+}
+.input_show_only_bottomline {
+    border-bottom:1px solid #dddddd;
+    border-top:0px;
+    border-left:0px;
+    border-right:0px;
+    padding-left:0px;
+}
+.button_margin_top {
+    margin-top:20px;
+}
+.padding_horizontal_zero{
+    padding-left:0px;
+    padding-right:0px;
+}
+.sign_top_logo{
+    background: url(/assets/pages/img/logo.png) top center no-repeat;
+    background-size: 65px;
+    border: none;
+    height: 70px;
+    margin-top: 10px;
+}
+.sign_form_outer_layout{
+    width:90%;
+    border:none;
+    border-radius: 20px !important;
+    background-color: #ffffff;
+    /*以下两行确保div居中*/
+    margin-left: auto;
+    margin-right: auto;
+}
+.sign_form_inner_layout{
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.bgcolor_grey{
+    background-color: #f5f5f5;
+}
+.text_center{
+    text-align: center;
+}
