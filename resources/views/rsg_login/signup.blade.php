@@ -70,23 +70,24 @@
 
         <div class="padding_horizontal_zero bgcolor_grey pull-left right_side_size">
             <div class="sign_top_logo"></div>
-            <div class="signin_signup_text"><b>SIGN UP</b></div>
+            <div class="signup_signin_text signup_text_margin_bottom"><b>SIGN UP</b></div>
             <div>
                  <form id="signup_form">
                      {{ csrf_field() }}
                      <div class="sign_form_outer_layout">
                          <div class="sign_form_inner_layout">
-                             <label for="email" class="label_margin_top">Email</label>
+                             <label for="email" class="signup_label_margin_top">Email</label>
                              <input type="email" id="email" name="email" class="form-control input_show_only_bottomline" placeholder="Email" required autofocus>
-                             <label for="password" class="label_margin_top">Password(at least 8 characters):</label>
+                             <label for="password" class="signup_label_margin_top">Password</label>
                              <input type="password" id="password" name="password" class="form-control input_show_only_bottomline" placeholder="Password" required>
-                             <label for="password_confirm" class="label_margin_top">Confirm password:</label>
-                             <input type="password" id="password_confirm" name="password_confirm" class="form-control input_show_only_bottomline" placeholder="Confirm Password">
-                             <label id="notification" style="color:red; display:block; height:35px"></label>
+                             <span style="color:#0000bb">at least 8 characters</span><br/>
+                             <label for="password_confirm" class="signup_label_margin_top">Confirm password:</label>
+                             <input type="password" id="password_confirm" name="password_confirm" class="form-control input_show_only_bottomline" placeholder="Confirm Password" required>
+                             <label id="notification" style="color:red; display:block;">&nbsp;</label>
                          </div>
                      </div>
                      <div>
-                         <button class="btn btn-circle red col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-2 signup_submit button_margin_top" role="button">
+                         <button class="btn btn-circle red col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-2 signup_submit signup_button_margin_top" role="button">
                              Submit
                          </button>
                      </div>
@@ -123,7 +124,7 @@
 
             $.ajax({
                 type: 'post',
-                url: '/signup_handle',
+                url: '/rsg_signup_handle',
                 data:$("#signup_form").serialize(),
                 dataType: 'json',
                 success: function (res) {
@@ -133,6 +134,7 @@
                            var success_msg = "Congratulations! Registration succeeded.<br/>Please check your email to activate your account."
 
                             $("#notification").html(success_msg);
+                            $("#notification").css({'color':'green'});
                             $("#notification").show();
 
                             setTimeout("window.top.location='/'", 4000);

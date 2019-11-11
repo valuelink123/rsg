@@ -52,21 +52,21 @@
         </div>
         <div class="padding_horizontal_zero bgcolor_grey pull-left right_side_size">
             <div class="sign_top_logo"></div>
-            <div class="signin_signup_text"><b>SIGN IN</b></div>
+            <div class="signup_signin_text signin_text_margin_bottom"><b>SIGN IN</b></div>
             <div>
                 <form id="signin_form">
                     {{ csrf_field() }}
                     <div class="sign_form_outer_layout">
                         <div class="sign_form_inner_layout">
-                            <label for="email" class="label_margin_top">Email</label>
+                            <label for="email" class="signin_label_margin_top">Email</label>
                             <input type="email" id="email" name="email" class="form-control input_show_only_bottomline" placeholder="Email" required autofocus>
-                            <label for="password" class="label_margin_top">Password</label>
+                            <label for="password" class="signin_label_margin_top">Password</label>
                             <input type="password" id="password" name="password" class="form-control input_show_only_bottomline" placeholder="Enter Password" required>
-                            <label id="notification" style="color:red; display:block; height:35px"></label>
+                            <label id="notification" style="color:red; display:block;">&nbsp;</label>
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-circle red col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-2 signin_submit button_margin_top" role="button">
+                        <button class="btn btn-circle red col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-2 signin_submit signin_button_margin_top" role="button">
                             OK
                         </button>
                     </div>
@@ -106,16 +106,17 @@
 
         $.ajax({
             type: 'post',
-            url: '/signin_handle',
+            url: '/rsg_signin_handle',
             data:$("#signin_form").serialize(),
             dataType: 'json',
             success: function (res) {
                 if (res) {
                     var msg = res.msg;
                     if (msg == "successful") {
-                        var success_msg = "Log in successfully";
+                        var success_msg = "Login successfully";
 
                         $("#notification").html(success_msg);
+                        $("#notification").css({'color':'green'});
                         $("#notification").show();
 
                         setTimeout("window.top.location='/'", 2000);

@@ -7,24 +7,32 @@
     /*height:auto;*/
 }
 .signin_img_size_adjustment{
-    width:440px;
+    width:524px;
     /*height:auto;*/
 }
 .right_side_size{
     width:332px;
-    height:auto;
+    height:515px;
 }
-.signin_signup_text {
+.signup_signin_text {
     color:#ff6400;
     font-size:20px;
     font-weight: bold;
     text-align:center;
     width:100%;
     height:auto;
-    padding-bottom:20px;
 }
-.label_margin_top {
-    margin-top:20px;
+.signup_text_margin_bottom{
+    margin-bottom:20px;
+}
+.signin_text_margin_bottom{
+    margin-bottom:40px;
+}
+.signup_label_margin_top {
+    margin-top:10px;
+}
+.signin_label_margin_top{
+    margin-top:40px;
 }
 .input_show_only_bottomline {
     border-bottom:1px solid #dddddd;
@@ -33,8 +41,11 @@
     border-right:0px;
     padding-left:0px;
 }
-.button_margin_top {
+.signup_button_margin_top {
     margin-top:20px;
+}
+.signin_button_margin_top {
+    margin-top:30px;
 }
 .padding_horizontal_zero{
     padding-left:0px;

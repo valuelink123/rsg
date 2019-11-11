@@ -41,7 +41,7 @@
 <!--            </div>-->
 
             <div class="modal-body">
-                <div id="iframe-loading" class="text-muted small" style="display:none; text-align:center;"><img src="/assets/pages/img/loading.gif"></div>
+                <div id="iframe-loading" class="text-muted small" style="display:none; text-align:center;"><img id="img_loading" src="/assets/pages/img/loading.gif"></div>
                 <iframe id="modal-iframe" name="modal-iframe" frameborder="0"></iframe>
             </div>
         </div>
@@ -113,6 +113,15 @@
             $('#dynamicallyInjectedModal').remove();
         });
         modal.find('iframe').hide();
+
+        <!--width有相对值和绝对值两种，比如650px, 50%。将px转成数字，例如：650px -> 650)-->
+        if(width.indexOf('px') > -1){
+            var temp_width = width.substring(0, width.length-2);
+            <!--加载图片原始大小是400x300, iframe宽度>=400时，图片显示实际大小，否则按比例缩小。这样不会有闪烁的现象。-->
+            var image_width = (temp_width >= 400) ? 400 : temp_width;
+            modal.find('#img_loading').css('width', image_width);
+        }
+
         modal.find('#iframe-loading').show();
         modal.find('iframe').on("load", function() {
             modal.find('#iframe-loading').hide();
@@ -168,15 +177,15 @@
             $('#signup_button').attr('data-width', '858px');
             $('#signup_button').attr('data-height', '515px');
 
-            $('#signin_button').attr('data-width', '774px');
-            $('#signin_button').attr('data-height', '432px');
+            $('#signin_button').attr('data-width', '858px');
+            $('#signin_button').attr('data-height', '515px');
         }
         else{
             $('#signup_button').attr('data-width', '332px');
             $('#signup_button').attr('data-height', '515px');
 
             $('#signin_button').attr('data-width', '332px');
-            $('#signin_button').attr('data-height', '432px');
+            $('#signin_button').attr('data-height', '515px');
         }
 
         if(width<768){
@@ -198,7 +207,8 @@
                 $('.product .product-right-title').css('font-size','12px');
 
                 //首页和详情页的公共部分
-                $('.about-header').css('height','100px');
+                //设置banner高度为130px，在手机端，右边三个按钮会变成3行，确保这三个按钮不会超出banner。
+                $('.about-header').css('height','130px');
                 $('.logo').css('height','70px');
                 $('.top-menu').removeClass('margin-top-30');
                 $('.top-menu').addClass('margin-top-10');

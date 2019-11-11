@@ -9,7 +9,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use App\Models\RsgUser;
 
 
-class LoginController extends Controller
+class RsgLoginController extends Controller
 {
     //
     public function __construct()
@@ -17,7 +17,7 @@ class LoginController extends Controller
     }
 
     public function signup(){
-        return view('login.signup');
+        return view('rsg_login.signup');
     }
 
     public function signupHandle(){
@@ -65,7 +65,7 @@ class LoginController extends Controller
                 $data_insert_result = $rsg_user->save();
 
                 if(isset($data_insert_result) && $data_insert_result){
-                    $send_email_result = LoginController::send_email($email, $token);
+                    $send_email_result = RsgLoginController::send_email($email, $token);
                     if(isset($send_email_result) && $send_email_result){
                         DB::commit();
                         $msg = "successful";
@@ -92,21 +92,25 @@ class LoginController extends Controller
             $rsg_users = RsgUser::where('email', $email)->where('token', $verify)->take(1)->get();
             if(count($rsg_users) > 0) {
                 $rsg_user = $rsg_users[0];
-                $rsg_user->status = 1;
-                $rsg_user->save();
-                echo "Your account has been created successfully.";
+                //如果状态为0，则未激活；状态为1，则已激活。
+                if($rsg_user->status == 0){
+                    $rsg_user->status = 1;
+                    $rsg_user->save();
+                }
+                // echo "Your account has been activated successfully.";
                 # 4秒后页面跳转到主页
-                header("Refresh:4; url=/signup");
+                header("Refresh:2; url=/");
             }
         }
 
     }
 
     public function signin(){
-        return view('login.signin');
+        return view('rsg_login.signin');
     }
 
     public function signinHandle(){
+
         if(!(isset($_POST['email']) && isset($_POST['password']))){
             exit;
         }
@@ -134,6 +138,7 @@ class LoginController extends Controller
                 }
                 else{
                     $msg = "successful";
+                    session()->put('user_email', $email);
                 }
             }
             else{
@@ -144,6 +149,15 @@ class LoginController extends Controller
         return json_encode(array('msg' => $msg));
     }
 
+    public function logout()
+    {
+        if(session()->get('user_email')){
+            session()->forget('user_email');
+        }
+
+        header("Refresh:1; url=/");
+    }
+
     function send_email($to_email, $token)
     {
         $mail = new PHPMailer;
@@ -151,21 +165,21 @@ class LoginController extends Controller
         $mail->CharSet = "UTF-8";
         $mail->SMTPDebug = 0;
         $mail->isSMTP();
-        $mail->Host = config('login.email_host');
-        $mail->Port = config('login.email_port');
-        $mail->SMTPAuth = config('login.email_smtpauth');
-        $mail->Username = config('login.email_username');
-        $mail->Password = config('login.email_password');
-        $mail->SMTPSecure = config('login.email_smtpsecure');
+        $mail->Host = config('rsg_login.email_host');
+        $mail->Port = config('rsg_login.email_port');
+        $mail->SMTPAuth = config('rsg_login.email_smtpauth');
+        $mail->Username = config('rsg_login.email_username');
+        $mail->Password = config('rsg_login.email_password');
+        $mail->SMTPSecure = config('rsg_login.email_smtpsecure');
 
-        $mail->setFrom(config('login.email_username'), config('login.email_from_name'));
+        $mail->setFrom(config('rsg_login.email_username'), config('rsg_login.email_from_name'));
         $mail->addAddress($to_email);
-        $mail->addReplyTo(config('login.email_username'), config('login.email_reply_to_name'));
+        $mail->addReplyTo(config('rsg_login.email_username'), config('rsg_login.email_reply_to_name'));
 
         $mail->isHTML(true);
 
         $mail->Subject = 'Account activation';
-        $mail->Body    = "Dear " . $to_email . "：<br/>Thank you for your registration.<br/>Please click the link below to activate your account.<br/><a href='" . url("/activation") . "?email=" . $to_email . "&verify=" . $token . "' target='_blank'>" . url("/activation") . "?email=" . $to_email . "&verify=" . $token . "</a>";
+        $mail->Body    = "Dear " . $to_email . "：<br/>Thank you for your registration.<br/>Please click the link below to activate your account.<br/><a href='" . url("/rsg_activation") . "?email=" . $to_email . "&verify=" . $token . "' target='_blank'>" . url("/rsg_activation") . "?email=" . $to_email . "&verify=" . $token . "</a>";
 
         if(!$mail->send()) {
             return false;
