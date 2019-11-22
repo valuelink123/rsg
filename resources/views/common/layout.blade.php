@@ -36,9 +36,10 @@
     <div class="modal centered-modal" id="dynamicallyInjectedModal" tabindex="-1" role="dialog" aria-labelledby="modal-title">
         <div class="modal-dialog modal-vertical-centered" role="document" style="width:<%= width %>;height:<%= height %>;">
         <div class="modal-content">
-<!--            <div class="modal-header">-->
-<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-<!--            </div>-->
+            <!-- 实现注册登录功能，需要把以下这个div注释掉。-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
 
             <div class="modal-body">
                 <div id="iframe-loading" class="text-muted small" style="display:none; text-align:center;"><img id="img_loading" src="/assets/pages/img/loading.gif"></div>

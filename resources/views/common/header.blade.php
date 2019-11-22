@@ -17,7 +17,7 @@
                 </select>
             </div>
 
-            <!-- <div class="col-md-4 col-sm-5 col-xs-12 col-lg-2" style="float:right;">
+            <div class="col-md-4 col-sm-5 col-xs-12 col-lg-2" style="float:right;">
                 <form action="{{url(App::getLocale().'/getrsg')}}" method="post" target="modal-iframe">
                     {{ csrf_field() }}
                     <input type="hidden" name="product_id" value="0">
@@ -31,9 +31,9 @@
                     </button>
                 </form>
 
-            </div> -->
+            </div>
 
-
+            <!--
             @if(session()->get('user_email'))
             <div class="col-xs-7 col-sm-3 col-md-2 col-lg-1" style="float:right;margin-bottom:5px;">
                 <button class="btn btn-circle red btn-outline dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="float:right;width:100%">
@@ -66,7 +66,7 @@
             </div>
 
             @endif
-
+            -->
 
         </div>
     </div>
