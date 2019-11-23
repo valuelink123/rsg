@@ -48,13 +48,13 @@
                                     </a>
 									<div class="progress-info">
                                         <div class="progress">
-                                            <span style="width: {{intval(array_get($product,'daily_remain')/array_get($product,'daily_stock')*100)}}%;" class="progress-bar progress-bar-success red-haze">
-                                                <span class="sr-only">{{intval(array_get($product,'daily_remain')/array_get($product,'daily_stock')*100)}}% {!! trans('custom.home-left') !!}</span>
+                                            <span style="width: {{array_get($product,'percent')}}%;" class="progress-bar progress-bar-success red-haze">
+                                                <span class="sr-only">{{array_get($product,'percent')}}% {!! trans('custom.home-left') !!}</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="title" >
-                                        <span> {{array_get($product,'daily_remain')}} {!! trans('custom.home-AVAILABLE') !!} </span>
+                                        <span> {{array_get($product,'task')}} {!! trans('custom.home-AVAILABLE') !!} </span>
 										
                                     </div>
 									
@@ -62,7 +62,7 @@
                                         <span><!--<a href="https://{{array_get($product,'site')}}/dp/{{array_get($product,'asin')}}?m={{array_get($product,'seller_id')}}" target="_blank">-->{{array_get($product,'product_name')}} <!--</a>--></span>
                                     </div>
 									
-									@if (array_get($product,'daily_remain')>0)
+									@if (array_get($product,'task')>0)
 									<form action="{{url(App::getLocale().'/getrsg')}}" method="post" target="modal-iframe">
 									{{ csrf_field() }}
 									<input type="hidden" name="product_id" value="{{array_get($product,'id')}}">

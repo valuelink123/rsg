@@ -119,12 +119,12 @@
                                     <span class="price-amount">${{$data['price']}}</span>
                                 </div>
                                 <div class="col-xs-5 col-md-3">
-                                    <span class="available-number">{{array_get($data,'daily_remain')}}</span>
+                                    <span class="available-number">{{array_get($data,'task')}}</span>
                                     <span class="available-avail">  {!! trans('custom.home-Available') !!} </span>
                                 </div>
                             </div>
                             <div class="product-right-button col-md-12">
-                                @if (array_get($data,'daily_remain')>0)
+                                @if (array_get($data,'task')>0)
                                     <form action="{{url(App::getLocale().'/getrsg')}}" method="post" target="modal-iframe">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="product_id" value="{{array_get($data,'id')}}">

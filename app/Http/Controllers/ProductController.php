@@ -24,10 +24,13 @@ class ProductController extends Controller
 			$data['product_content'] = htmlspecialchars($data['product_content']);
 			$data['product_summary'] = nl2br($data['product_summary']);
 			$data['price'] = ltrim($data['price'],0);
+			$data['task'] = $data['sales_target_reviews']-$data['requested_review'];
+			$data['product_summary'] = json_decode(str_replace("'",'"',$data['product_summary']),TRUE);
+			if($data['product_summary']){
+				$data['product_summary'] = implode("<br/>",$data['product_summary']);
+			}
 		}
 
-		$date=date('Y-m-d');
-		$prodcuts = $un_produsts = [];
 		$customer_email = $request->route('customer_email');
 		if(session()->get('customer_email')){
 			$customer_email = session()->get('customer_email');
@@ -36,19 +39,7 @@ class ProductController extends Controller
 			if ($validator->passes()) session()->put('customer_email',$customer_email);
 		}
 
-
-		$lang_arr=array(
-			'en'=>'www.amazon.com',
-			'gb'=>'www.amazon.co.uk',
-			'de'=>'www.amazon.de',
-			'fr'=>'www.amazon.fr',
-			'it'=>'www.amazon.it',
-			'es'=>'www.amazon.es',
-			'jp'=>'www.amazon.co.jp',
-		);
 		$from = isset($_REQUEST['from']) ? $_REQUEST['from'] : '';
-
-		$site = array_get($lang_arr,strtolower(App::getLocale()??'en'),'www.amazon.com');
 
 		return view('productDetail',['data'=>$data,'customer_email'=>$customer_email,'from'=>$from]);
 	}

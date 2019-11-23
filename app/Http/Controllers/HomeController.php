@@ -22,7 +22,6 @@ class HomeController extends Controller
     {	
 
 		$date=date('Y-m-d');
-		$prodcuts = $un_produsts = [];
 		$customer_email = $request->route('customer_email');
 		if(session()->get('customer_email')){
 			$customer_email = session()->get('customer_email');
@@ -45,12 +44,74 @@ class HomeController extends Controller
 		
 		$site = array_get($lang_arr,strtolower(App::getLocale()??'en'),'www.amazon.com');
 
-		$produsts = RsgProduct::where('status',1)->where('daily_remain','>',0)->where('site',$site)->where('start_date','<=',$date)->where('end_date','>=',$date)->inRandomOrder()->take(8)->get()->toArray();
-		$count = count($produsts);
-		if($count<8){
-			$un_produsts = RsgProduct::where('status',1)->where('site',$site)->where('daily_remain','<=',0)->where('start_date','<=',$date)->where('end_date','>=',$date)->inRandomOrder()->take(8-$count)->get()->toArray();
+		$where_product = " and site = '".$site."' and created_at = '".$date."' and cast(rsg_products.sales_target_reviews as signed) - cast(rsg_products.requested_review as signed) > 0 and product_name != '' and product_img !='' and price < 100 ";
+		$orderby = " order by rsg_products.order_status desc,score desc,id desc ";
+		$sql = "
+        SELECT rsg_products.id as id,(status_score*type_score*level_score*rating_score*review_score)  as score
+            from rsg_products  
+            left join (
+				select id,
+					case post_status
+						WHEN 1 then 1
+						WHEN 2 then 2
+						ELSE 0 END as status_score,
+					case post_type
+						WHEN 1 then 1*20
+						WHEN 2 then 0.5*20
+						ELSE 0 END as type_score,
+					case sku_level
+						WHEN 'S' then 1
+						WHEN 'A' then 0.6
+						WHEN 'B' then 0.2
+						ELSE 0 END as level_score,
+					case review_rating
+						WHEN 5 then 1
+						WHEN 4.9 then 1
+						WHEN 4.8 then 2
+						WHEN 4.7 then 4
+						WHEN 4.6 then 2
+						WHEN 4.5 then 1
+						WHEN 4.4 then 1
+						WHEN 4.3 then 3
+						WHEN 4.2 then 5
+						WHEN 4.1 then 4
+						WHEN 0 then 1
+						ELSE 0 END as rating_score,
+					if(site='www.amazon.com',
+						case 
+							WHEN number_of_reviews < 100 then 10
+							WHEN number_of_reviews >= 100 and number_of_reviews < 400 then 7
+							WHEN number_of_reviews >= 400 and number_of_reviews < 1000 then 4
+							WHEN number_of_reviews >= 1000 and number_of_reviews < 4000 then 1
+							WHEN number_of_reviews >= 4000 then 0
+							END,
+						case 
+							WHEN number_of_reviews < 40 then 10
+							WHEN number_of_reviews >= 40 and number_of_reviews < 100 then 7
+							WHEN number_of_reviews >= 100 and number_of_reviews < 400 then 4
+							WHEN number_of_reviews >= 400 and number_of_reviews <= 1000 then 1 
+							WHEN number_of_reviews > 1000 then 0
+							END 
+					)as review_score 
+				from rsg_products 
+				where created_at = '".$date."'  
+			) as rsg_score on rsg_score.id=rsg_products.id 
+			where 1 = 1 {$where_product} 
+			{$orderby} limit 10";
+		$_products = DB::select($sql);
+		$ids = array();
+		//取出前十条数据的id
+		foreach($_products as $key=>$val){
+			$ids[] = $val->id;
 		}
-		return view('home',['customer_email'=>$customer_email,'products'=>array_merge($produsts,$un_produsts),'from'=>$from]);
+		//在这前十条数据中随机选择8条数据展示
+		$products = RsgProduct::whereIN('id',$ids)->inRandomOrder()->take(8)->get()->toArray();
+		foreach($products as $key=>$val){
+			$products[$key]['task'] = $val['sales_target_reviews'] - $val['requested_review'];
+			//剩余百分比的计算（task/sales_target_reviews）
+			$products[$key]['percent'] = $val['sales_target_reviews']>0 ? intval($products[$key]['task']*100/$val['sales_target_reviews']) : '0';
+		}
+		return view('home',['customer_email'=>$customer_email,'products'=>$products,'from'=>$from]);
     }
 	
 	public function getrsg(Request $request){
