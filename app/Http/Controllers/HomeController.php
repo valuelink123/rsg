@@ -44,7 +44,7 @@ class HomeController extends Controller
 		
 		$site = array_get($lang_arr,strtolower(App::getLocale()??'en'),'www.amazon.com');
 
-		$where_product = " and site = '".$site."' and created_at = '".$date."' and cast(rsg_products.sales_target_reviews as signed) - cast(rsg_products.requested_review as signed) > 0 and product_name != '' and product_img !='' ";
+		$where_product = " and site = '".$site."' and created_at = '".$date."' and cast(rsg_products.sales_target_reviews as signed) - cast(rsg_products.requested_review as signed) > 0 and product_img !='' ";
 		$orderby = " order by rsg_products.order_status desc,score desc,id desc ";
 		if($site=='www.amazon.com'){
 			$where_product .= ' and price < 100 ';
