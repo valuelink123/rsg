@@ -49,6 +49,11 @@ class HomeController extends Controller
 		if($site=='www.amazon.com'){
 			$where_product .= ' and price < 100 ';
  		}
+		$limit = 8;//默认显示8条数据
+		if($site=='www.amazon.co.jp'){//日本站点限制显示置顶产品
+			$where_product .= ' and order_status = 1 ';
+			$limit = 4;//日本站点最多显示4条数据
+		}
 
 		$sql = "
         SELECT rsg_products.id as id,(status_score*type_score*level_score*rating_score*review_score)  as score
@@ -109,7 +114,7 @@ class HomeController extends Controller
 			$ids[] = $val->id;
 		}
 		//在这前十条数据中随机选择8条数据展示
-		$products = RsgProduct::whereIN('id',$ids)->inRandomOrder()->take(8)->get()->toArray();
+		$products = RsgProduct::whereIN('id',$ids)->inRandomOrder()->take($limit)->get()->toArray();
 		foreach($products as $key=>$val){
 			$products[$key]['task'] = $val['sales_target_reviews'] - $val['requested_review'];
 			//剩余百分比的计算（task/sales_target_reviews）
