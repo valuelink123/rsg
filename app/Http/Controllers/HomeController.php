@@ -19,9 +19,8 @@ class HomeController extends Controller
     }
 
     public function index(Request $request)
-    {	
-
-		$date=date('Y-m-d');
+    {
+		$date = $this->getDefaultDate(date('Y-m-d'));
 		$customer_email = $request->route('customer_email');
 		if(session()->get('customer_email')){
 			$customer_email = session()->get('customer_email');
@@ -114,7 +113,11 @@ class HomeController extends Controller
 			$ids[] = $val->id;
 		}
 		//在这前十条数据中随机选择8条数据展示
-		$products = RsgProduct::whereIN('id',$ids)->inRandomOrder()->take($limit)->get()->toArray();
+		$products = RsgProduct::whereIN('rsg_products.id',$ids)
+			->join('asin', function ($join) {
+				$join->on('rsg_products.asin', '=','asin.asin')->on('rsg_products.site', '=','asin.site')->on('rsg_products.sellersku','=','asin.sellersku');
+			})->inRandomOrder()->take($limit)->select('asin.id as asin_id','rsg_products.*')->get()->toArray();
+
 		foreach($products as $key=>$val){
 			$products[$key]['task'] = $val['sales_target_reviews'] - $val['requested_review'];
 			//剩余百分比的计算（task/sales_target_reviews）

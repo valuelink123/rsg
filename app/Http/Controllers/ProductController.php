@@ -18,7 +18,12 @@ class ProductController extends Controller
 	public function detail(Request $request)
 	{
 		$id = intval($_REQUEST['id']);
-		$data = RsgProduct::where('id',$id)->take(1)->get()->toArray();
+		$date = $this->getDefaultDate(date('Y-m-d'));
+		$data = RsgProduct::where('asin.id',$id)->where('created_at',$date)
+			->join('asin', function ($join) {
+				$join->on('rsg_products.asin', '=','asin.asin')->on('rsg_products.site', '=','asin.site')->on('rsg_products.sellersku','=','asin.sellersku');
+			})->take(1)->select('asin.id as asin_id','rsg_products.*')->get()->toArray();
+
 		if($data){
 			$data = $data[0];
 			$data['product_content'] = htmlspecialchars($data['product_content']);
