@@ -41,7 +41,7 @@
 							@foreach($products as $product)
                             <div class="col-lg-3 col-md-6">
                                 <div class="portlet light">
-                                    <a href="/product/detail?id={{$product['asin_id']}}" target="_blank">
+                                    <a href="/product/detail?id={{$product['asin_id']}}&user=V{{$user_id}}" target="_blank">
                                     <div class="photo">
                                        <!--<a href="https://{{array_get($product,'site')}}/dp/{{array_get($product,'asin')}}?m={{array_get($product,'seller_id')}}" target="_blank">--> <img src="{{array_get($product,'product_img')}}" alt="" class="img-responsive" /><!--</a>-->
                                     </div>
@@ -67,6 +67,7 @@
 									{{ csrf_field() }}
 									<input type="hidden" name="product_id" value="{{array_get($product,'id')}}">
 									<input type="hidden" name="customer_email" value="{{$customer_email}}">
+                                    <input type="hidden" name="user_id" value="{{$user_id}}">
 									<button type="submit" class="btn btn-circle red col-xs-8 col-xs-offset-2 col-md-8 col-md-offset-2 trigger-modal" role="button" data-width="50%" data-height="60%">{!! trans('custom.home-wantit') !!}</button>
 									</form>
 									@else

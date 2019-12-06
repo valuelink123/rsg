@@ -19,6 +19,10 @@ class ProductController extends Controller
 	{
 		$id = intval($_REQUEST['id']);
 		$date = $this->getDefaultDate(date('Y-m-d'));
+		$user = isset($_GET['user']) ? $_GET['user'] : '';
+		$user = explode('V',$user);
+		$userid = isset($user[1]) && $user[1] ? $user[1] : 0;
+
 		$data = RsgProduct::where('asin.id',$id)->where('created_at',$date)
 			->join('asin', function ($join) {
 				$join->on('rsg_products.asin', '=','asin.asin')->on('rsg_products.site', '=','asin.site')->on('rsg_products.sellersku','=','asin.sellersku');
@@ -46,7 +50,7 @@ class ProductController extends Controller
 
 		$from = isset($_REQUEST['from']) ? $_REQUEST['from'] : '';
 
-		return view('productDetail',['data'=>$data,'customer_email'=>$customer_email,'from'=>$from]);
+		return view('productDetail',['data'=>$data,'customer_email'=>$customer_email,'from'=>$from,'user_id'=>$userid]);
 	}
 
 

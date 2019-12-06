@@ -21,6 +21,10 @@ class HomeController extends Controller
     public function index(Request $request)
     {
 		$date = $this->getDefaultDate(date('Y-m-d'));
+		$user = isset($_GET['user']) ? $_GET['user'] : '';
+		$user = explode('V',$user);
+		$userid = isset($user[1]) && $user[1] ? $user[1] : 0;
+
 		$customer_email = $request->route('customer_email');
 		if(session()->get('customer_email')){
 			$customer_email = session()->get('customer_email');
@@ -123,13 +127,16 @@ class HomeController extends Controller
 			//剩余百分比的计算（task/sales_target_reviews）
 			$products[$key]['percent'] = $val['sales_target_reviews']>0 ? intval($products[$key]['task']*100/$val['sales_target_reviews']) : '0';
 		}
-		return view('home',['customer_email'=>$customer_email,'products'=>$products,'from'=>$from]);
+		return view('home',['customer_email'=>$customer_email,'products'=>$products,'from'=>$from,'user_id'=>$userid]);
     }
 	
 	public function getrsg(Request $request){
 		$product_id = intval($request->input('product_id'));
 		$agree = intval($request->input('agree'));
 		$customer_email = $request->input('customer_email');
+		$user_id = intval($request->input('user_id'));
+
+		if($user_id) session()->put('user_id',$user_id);
 		
 		if(session()->get('customer_email')){
 			$customer_email = session()->get('customer_email');
@@ -201,8 +208,9 @@ class HomeController extends Controller
 					return view('submit',$v_v);
 					die();
 				}
-				$daily_remain = RsgProduct::where('id',$product_id)->where('daily_remain','>',0)->decrement('daily_remain');
-				if($daily_remain){
+				// $daily_remain = RsgProduct::where('id',$product_id)->where('daily_remain','>',0)->decrement('daily_remain');
+				$res = RsgProduct::where('id',$product_id)->increment('requested_review');//已请求的数量+1
+				if($res){
 					//$is_ctg = DB::table('ctg')->where('email',$customer_email)->first();
 					$insertData = array(
 						'product_id'=>$product_id,
@@ -212,6 +220,8 @@ class HomeController extends Controller
 						'created_at'=>date('Y-m-d H:i:s'),
 						'updated_at'=>date('Y-m-d H:i:s'),
 						'step'=>($is_ctg)?3:1,
+						'user_id' => session()->get('user_id'),
+						'processor' => session()->get('user_id'),//添加请求数据的时候指定负责人为VOP系统的user_id
 					);
 					
 					$data = RsgRequest::firstOrCreate(['customer_email'=>$customer_email], $insertData );
@@ -230,7 +240,7 @@ class HomeController extends Controller
 					die();
 				}else{
 					$v_v['step']='-3';
-					return view('error',$v_v); //产品无库存 不可申请
+					return view('error',$v_v); //产品数据库操作异常 不可申请
 					die();
 				}
 				

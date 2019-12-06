@@ -129,6 +129,7 @@
                                         {{ csrf_field() }}
                                         <input type="hidden" name="product_id" value="{{array_get($data,'id')}}">
                                         <input type="hidden" name="customer_email" value="{{$customer_email}}">
+                                        <input type="hidden" name="user_id" value="{{$user_id}}">
                                         <button type="submit" class="btn btn-product btn-circle red col-xs-4  col-md-4  trigger-modal" role="button" data-width="50%" data-height="60%">{!! trans('custom.home-wantit') !!}</button>
                                     </form>
                                 @else
