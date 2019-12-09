@@ -146,13 +146,14 @@ class HomeController extends Controller
 		$validator = Validator::make(array('customer_email'=>$customer_email), array('customer_email'=>array('email')));
 		if ($validator->passes())
 		{
+			/*取消非CTG限制
 			$is_ctg = DB::table('ctg')->where('email',$customer_email)->first();
 			if(!$is_ctg){
 				$v_v['step']='-4';
 				return view('error',$v_v);
 				die();
 			}
-			
+			*/
 			if(!(session()->get('customer_email'))) session()->put('customer_email',$customer_email);
 			if($product_id==-1 && $customer_email){
 				$product_id=0;
