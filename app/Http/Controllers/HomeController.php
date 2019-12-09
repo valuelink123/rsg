@@ -222,7 +222,7 @@ class HomeController extends Controller
 						'updated_at'=>date('Y-m-d H:i:s'),
 						'step'=>($is_ctg)?3:1,
 						'user_id' => session()->get('user_id'),
-						'processor' => session()->get('user_id'),//添加请求数据的时候指定负责人为VOP系统的user_id
+						'processor' => (session()->get('user_id'))??0,//添加请求数据的时候指定负责人为VOP系统的user_id
 					);
 					
 					$data = RsgRequest::firstOrCreate(['customer_email'=>$customer_email], $insertData );
