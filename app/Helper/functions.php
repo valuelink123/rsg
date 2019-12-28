@@ -12,3 +12,14 @@ function getStepStatus(){
 		'9'  => 'Completed'
 	);
 }
+
+/*
+ * 通过VOP系统的userid分配各自的Pageid
+ * 默认值为944899235710664
+ */
+function getPageidByUserid(){
+	return array(
+		'0'=>'944899235710664',
+		'27'  => '107381077272596',
+	);
+}

@@ -24,6 +24,8 @@ class HomeController extends Controller
 		$user = isset($_GET['user']) ? $_GET['user'] : '';
 		$user = explode('V',$user);
 		$userid = isset($user[1]) && $user[1] ? $user[1] : 0;
+		$pageid = isset(getPageidByUserid()[$userid]) ? getPageidByUserid()[$userid] : getPageidByUserid()[0];
+		session()->put('pageid',$pageid);
 
 		$customer_email = $request->route('customer_email');
 		if(session()->get('customer_email')){

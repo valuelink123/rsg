@@ -22,6 +22,9 @@ class ProductController extends Controller
 		$user = isset($_GET['user']) ? $_GET['user'] : '';
 		$user = explode('V',$user);
 		$userid = isset($user[1]) && $user[1] ? $user[1] : 0;
+		$pageid = isset(getPageidByUserid()[$userid]) ? getPageidByUserid()[$userid] : getPageidByUserid()[0];
+		session()->put('pageid',$pageid);
+
 
 		$data = RsgProduct::where('asin.id',$id)->where('created_at',$date)
 			->join('asin', function ($join) {
