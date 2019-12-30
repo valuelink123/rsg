@@ -199,6 +199,16 @@ class HomeController extends Controller
 			
 			
 			if($product_id){
+                $crmRsgStatusArr = getCrmRsgStatusArr();
+                $rsgStatus = DB::select('SELECT rsg_status, rsg_status_explain from client_info join client on client.id = client_info.client_id and client_info.email = "'.$customer_email.'"');
+
+                if($rsgStatus && $rsgStatus[0]->rsg_status == 1){
+                    $msg = isset($crmRsgStatusArr[$rsgStatus[0]->rsg_status_explain]) ? $crmRsgStatusArr[$rsgStatus[0]->rsg_status_explain]['rsg'] : $rsgStatus[0]->rsg_status_explain;
+                    $v_v['step']='0';
+                    echo '<script>alert("'.$msg.'")</script>';
+                    return view('submit', $v_v);
+                    die();
+                }
 				//参与次数限制
 				$exists = RsgRequest::where('customer_email',$customer_email)->first();
 				if($exists){
