@@ -54,14 +54,14 @@ class HomeController extends Controller
 		if($site=='www.amazon.com'){
 			$where_product .= ' and price < 100 ';
  		}
-		$limit = 8;//默认显示8条数据
+		$limit = 10;//默认显示10条数据
 		if($site=='www.amazon.co.jp'){//日本站点限制显示置顶产品
 			$where_product .= ' and order_status = 1 ';
 			$limit = 4;//日本站点最多显示4条数据
 		}
 
 		$sql = "
-        SELECT rsg_products.id as id,(status_score*type_score*level_score*rating_score*review_score)  as score
+        SELECT rsg_products.id as id,(status_score*type_score*level_score*rating_score*review_score*days_score)  as score
             from rsg_products  
             left join (
 				select id,
@@ -73,6 +73,7 @@ class HomeController extends Controller
 						WHEN 1 then 1*20
 						WHEN 2 then 0.5*20
 						ELSE 0 END as type_score,
+				   	if(stock_days<30,0,1) as days_score,
 					case sku_level
 						WHEN 'S' then 1
 						WHEN 'A' then 0.6
