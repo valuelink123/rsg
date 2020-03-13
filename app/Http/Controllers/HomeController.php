@@ -223,7 +223,7 @@ class HomeController extends Controller
 					die();
 				}
 				// $daily_remain = RsgProduct::where('id',$product_id)->where('daily_remain','>',0)->decrement('daily_remain');
-				$res = RsgProduct::where('id',$product_id)->increment('requested_review');//已请求的数量+1
+				$res = RsgProduct::where('id',$product_id)->whereRaw('requested_review < sales_target_reviews')->increment('requested_review');//已请求的数量+1
 				if($res){
 					$is_ctg = DB::table('ctg')->where('email',$customer_email)->first();
 					$insertData = array(
