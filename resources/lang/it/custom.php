@@ -32,8 +32,8 @@ CTG Team',
 	'help-r-1'     => 'Passaggio 1: Accedi al tuo account Amazon e clicca sull\'immagine del profilo per andare al tuo profilo.',
 	'help-r-2'     => 'Passaggio 2: Individua la recensione e clicca su "Mostra revisione completa"',
 	'help-r-3'     => 'Passaggio 3: Copia l\'URL di questa pagina per avere un link condivisibile per la tua recensione completa.',
-	'wait-4'     => 'Grazie per aver inserito le informazioni del tuo account Paypal.<BR> Trasferiremo il denaro per l\’acquisto entro 3 giorni e riceverai un messaggio di notifica da marketing@claimthegift.com. Nell\’attesa, controlla di tanto in tanto la tua casella di posta elettronica e l\'account Paypal.',
-	'wait-6'     => 'Grazie per aver caricato l’ID del tuo ordine.<BR> Il passo successivo è rilasciare una recensione entro 3 giorni dal ricevimento del prodotto. In caso di problemi, contatta semplicemente i nostri servizi all’indirizzo email: marketing@claimthegift.com e riceverai subito assistenza.',
+	'wait-4'     => 'Grazie per aver inserito le informazioni del tuo account Paypal.<BR> Trasferiremo il denaro per l\’acquisto entro 3 giorni e riceverai un messaggio di notifica da marketing@claimgiftsnow.com. Nell\’attesa, controlla di tanto in tanto la tua casella di posta elettronica e l\'account Paypal.',
+	'wait-6'     => 'Grazie per aver caricato l’ID del tuo ordine.<BR> Il passo successivo è rilasciare una recensione entro 3 giorni dal ricevimento del prodotto. In caso di problemi, contatta semplicemente i nostri servizi all’indirizzo email: marketing@claimgiftsnow.com e riceverai subito assistenza.',
 	'wait-8'     => 'Grazie per aver caricato il link della tua recensione.
 Siamo felici di averti come nostro cliente e speriamo che il prodotto product_name sia di tuo gradimento.
 Ti abbiamo inserito nella nostra lista per essere preso in considerazione per le nuove promozioni gratuite!.',
@@ -99,7 +99,7 @@ Regole:<BR>
 	'home-a5'     => 'Si può selezionare un solo prodotto alla volta',
 	
 	'home-q6'     => 'Ho richiesto di partecipare alla promozione ma non ho ricevuto il denaro o il prodotto. A chi posso chiedere per aiuto?',
-	'home-a6'     => 'Basta contattarci tramite la nostra email ufficiale: marketing@claimthegift.com, risponderemo quanto prima.',
+	'home-a6'     => 'Basta contattarci tramite la nostra email ufficiale: marketing@claimgiftsnow.com, risponderemo quanto prima.',
 
 	'home-rule' 		  => 'Rules & Instructions',
 	'home-rule1' =>'

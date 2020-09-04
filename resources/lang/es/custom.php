@@ -36,8 +36,8 @@ Gracias por su apoyo.',
 	'help-r-1'     => 'Paso 1: Inicie sesión en su cuenta de Amazon y haga clic en la imagen de su perfil para ir a su perfil.',
 	'help-r-2'     => 'Paso 2: Busque su opinión y haga clic en "Ver opinión completa"',
 	'help-r-3'     => 'Paso 3: Copie la URL en esta página para tener el enlace que se puede compartir con su opinión completa.',
-	'wait-4'     => 'Gracias por completar la información de su cuenta de PayPal. <BR>Le transferiremos el dinero de compra en un plazo de 3 días y le enviaremos un mensaje de notificación a través de marketing@claimthegift.com. Por favor, esté al pendiente de su bandeja de entrada del correo electrónico y de su cuenta de PayPal.',
-	'wait-6'     => 'Gracias por subir el ID de tu pedido.<BR> Por favor, deja un comentario dentro de los 3 días de haber recibido el producto. Si tienes algún problema, simplemente contáctanos a través de nuestro correo electrónico oficial: marketing@claimthegift.com, y te ayudaremos de inmediato.',
+	'wait-4'     => 'Gracias por completar la información de su cuenta de PayPal. <BR>Le transferiremos el dinero de compra en un plazo de 3 días y le enviaremos un mensaje de notificación a través de marketing@claimgiftsnow.com. Por favor, esté al pendiente de su bandeja de entrada del correo electrónico y de su cuenta de PayPal.',
+	'wait-6'     => 'Gracias por subir el ID de tu pedido.<BR> Por favor, deja un comentario dentro de los 3 días de haber recibido el producto. Si tienes algún problema, simplemente contáctanos a través de nuestro correo electrónico oficial: marketing@claimgiftsnow.com, y te ayudaremos de inmediato.',
 	'wait-8'     => 'TGracias por subir el enlace de tu opinión.
 Estamos muy felices por tener como nuestro cliente y esperamos que disfrutes de tu product_name.
 ¡Te hemos agregado a nuestra lista de invitados para las próximas promociones de regalos!',
@@ -107,7 +107,7 @@ Reglas:<BR>
 	'home-a5'     => 'Solamente un producto a la vez.',
 	
 	'home-q6'     => 'Solicité la promoción correctamente, pero no recibí los fondos ni el producto. ¿A quién debo contactar?',
-	'home-a6'     => 'Simplemente póngase en contacto al siguiente correo electrónico oficial: marketing@claimthegift.com, le responderemos lo antes posible.',
+	'home-a6'     => 'Simplemente póngase en contacto al siguiente correo electrónico oficial: marketing@claimgiftsnow.com, le responderemos lo antes posible.',
 
 	'home-rule' 		  => 'Rules & Instructions',
 	'home-rule1' =>'

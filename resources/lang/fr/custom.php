@@ -32,8 +32,8 @@ CTG Team',
 	'help-r-1'     => 'Étape 1 : connectez-vous à votre compte Amazon et cliquez sur l\'image de votre profil pour accéder à votre profil. ',
 	'help-r-2'     => 'Étape 2: localisez votre commentaire et cliquez sur "Voir le commentaire" ',
 	'help-r-3'     => 'Étape 3: Copiez l\'URL sur cette page pour créer un lien partageable vers votre commentaire complet. ',
-	'wait-4'     => 'Merci d\'avoir fourmis les informations de votre compte PayPal.<BR> Nous vous transférerons le dépôt d’achat dans les 3 jours et vous enverrons un message de notification de marketing@claimthegift.com. S\'il vous plaît garder un œil sur votre boîte de réception e - mail et compte PayPal durant cette période. ',
-	'wait-6'     => 'Merci d\'avoir téléchargé votre numéro de commande. S\'il vous plaît laissez un commentaire dans les 3 jours suivant la réception du produit. Si vous rencontrez de nombreux problèmes, contactez le support technique via notre adresse électronique officielle : marketing@claimthegift.com. Nous vous aiderons immédiatement. ',
+	'wait-4'     => 'Merci d\'avoir fourmis les informations de votre compte PayPal.<BR> Nous vous transférerons le dépôt d’achat dans les 3 jours et vous enverrons un message de notification de marketing@claimgiftsnow.com. S\'il vous plaît garder un œil sur votre boîte de réception e - mail et compte PayPal durant cette période. ',
+	'wait-6'     => 'Merci d\'avoir téléchargé votre numéro de commande. S\'il vous plaît laissez un commentaire dans les 3 jours suivant la réception du produit. Si vous rencontrez de nombreux problèmes, contactez le support technique via notre adresse électronique officielle : marketing@claimgiftsnow.com. Nous vous aiderons immédiatement. ',
 	'wait-8'     => 'Merci d\'avoir téléchargé votre lien de commentaire. 
 Nous sommes heureux de pouvoir vous compter parmi nos clients et espérons que vous apprécierez votre  product_name !
 Vous avez été placé sur notre liste afin d’être pris en compte pour d’autres promotions !',
@@ -103,7 +103,7 @@ Règles : <BR>
 	'home-a5'     => 'Un seul produit peut être sélectionné à la fois',
 	
 	'home-q6'     => 'J\'ai postulé avec succès pour la promotion mais je n\'ai pas reçu les fonds ou le produit. À qui puis-je demander de l’aide ?',
-	'home-a6'     => 'Il suffit de nous contacter via notre email officiel : marketing@claimthegift.com, nous vous répondrons dans les meilleurs délais. ',
+	'home-a6'     => 'Il suffit de nous contacter via notre email officiel : marketing@claimgiftsnow.com, nous vous répondrons dans les meilleurs délais. ',
 
 	'home-rule' 		  => 'Rules & Instructions',
 	'home-rule1' =>'

@@ -32,8 +32,8 @@ CTG Team',
 	'help-r-1'     => 'Step 1: Log in your Amazon account and click on your profile picture to go to your profile.',
 	'help-r-2'     => 'Step 2: Locate your review and click &#8220;See full review&#8221; ',
 	'help-r-3'     => 'Step 3: Copy the URL on this page to have a shareable link to your full review. ',
-	'wait-4'     => 'Paypalのアカウント情報を入力していただきありがとうございます。<BR> 3日以内に購入保証金をお送りし、marketing@claimthegift.comから通知メッセージをお送りします。 それまでの間、あなたのEメールの受信箱とPaypalのアカウントに注意してください。 ',
-	'wait-6'     => '注文IDをアップロードしていただきありがとうございます。 <BR>商品を受け取ってから3日以内にレビューを残してください。 あなたが何か問題に遭遇したならば、単に私達の公式の電子メールでサポートに連絡してください：marketing@claimthegift.com、そしてすぐにあなたを助けます。',
+	'wait-4'     => 'Paypalのアカウント情報を入力していただきありがとうございます。<BR> 3日以内に購入保証金をお送りし、marketing@claimgiftsnow.comから通知メッセージをお送りします。 それまでの間、あなたのEメールの受信箱とPaypalのアカウントに注意してください。 ',
+	'wait-6'     => '注文IDをアップロードしていただきありがとうございます。 <BR>商品を受け取ってから3日以内にレビューを残してください。 あなたが何か問題に遭遇したならば、単に私達の公式の電子メールでサポートに連絡してください：marketing@claimgiftsnow.com、そしてすぐにあなたを助けます。',
 	'wait-8'     => 'レビューリンクをアップロードしていただきありがとうございます。<BR>
 あなたが私たちの顧客であり、あなたがあなたのproduct_nameを楽しんでくれることを願っています。
 さらに無料のギフトプロモーションを検討するために、あなたはGoogleのリストに登録されました。',
@@ -102,7 +102,7 @@ CTG Team',
 	'home-a5'     => '一度に1つだけ申し込むことができます。',
 	
 	'home-q6'     => 'サンプルを申し込んだ後で、返金あるいは商品を受け取れない場合',
-	'home-a6'     => 'イベントの公式メールアドレス【marketing@claimthegift.com】にご連絡ください。すぐ対応いたします。',
+	'home-a6'     => 'イベントの公式メールアドレス【marketing@claimgiftsnow.com】にご連絡ください。すぐ対応いたします。',
 
 	'home-rule' 		  => 'Rules & Instructions',
 	'home-rule1' =>'

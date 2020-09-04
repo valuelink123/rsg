@@ -36,8 +36,8 @@ Thanks for your support.',
 	'help-r-1'     => 'Step 1: Log in your Amazon account and click on your profile picture to go to your profile.',
 	'help-r-2'     => 'Step 2: Locate your review and click &#8220;See full review&#8221; ',
 	'help-r-3'     => 'Step 3: Copy the URL on this page to have a shareable link to your full review. ',
-	'wait-4'     => 'Thanks for filling in your Paypal account information.<BR> We will transfer the purchasing deposit to you within 3 days and send a notification message to you from marketing@claimthegift.com. Please keep an eye on your email inbox and Paypal account in the meantime. ',
-	'wait-6'     => 'Thanks for uploading your Order ID. <BR>Please leave a review within 3 days of receiving the product. If you encounter any problems, simply contact support at our official email:marketing@claimthegift.com, and we will assist you immediately.',
+	'wait-4'     => 'Thanks for filling in your Paypal account information.<BR> We will transfer the purchasing deposit to you within 3 days and send a notification message to you from marketing@claimgiftsnow.com. Please keep an eye on your email inbox and Paypal account in the meantime. ',
+	'wait-6'     => 'Thanks for uploading your Order ID. <BR>Please leave a review within 3 days of receiving the product. If you encounter any problems, simply contact support at our official email:marketing@claimgiftsnow.com, and we will assist you immediately.',
 	'wait-8'     => 'Thanks for uploading your review link.<BR>
 We’re grateful to have you as our customer and hope you enjoy your product_name.
 You’ve been placed on our list for consideration for further free gift promotions!',
@@ -97,7 +97,7 @@ Rules:<BR>
 	'home-a2'     => 'The daily quota for each product is fixed. However, you can try to apply for it the following day.',
 	
 	'home-q3'     => 'I successfully applied for the promotion but did not receive the funds or product. Who can I ask for help?',
-	'home-a3'     => 'Simply contact us through the live chat or messenger. If there is no agent available for the moment, you can send an email to marketing@claimthegift.com, we will respond as soon as possible.',
+	'home-a3'     => 'Simply contact us through the live chat or messenger. If there is no agent available for the moment, you can send an email to marketing@claimgiftsnow.com, we will respond as soon as possible.',
 	
 	'home-q4'     => 'I don’t have a Paypal account, can I participate in this event?',
 	'home-a4'     => 'We apologize, but we are only able to transfer the funds for purchase via Paypal.',

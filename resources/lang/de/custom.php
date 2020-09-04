@@ -36,8 +36,8 @@ Danke für deine Unterstützung.',
 	'help-r-1'     => 'Schritt 1: Melden Sie sich mit Ihrem Amazon-Konto an und klicken Sie auf Ihr Profilbild, um zu Ihrem Profil zu gelangen.',
 	'help-r-2'     => 'Schritt 2: Finden Sie Ihren Review-Link und klicken Sie auf Lesen Sie weiter.',
 	'help-r-3'     => 'Schritt 3: Kopieren Sie die URL dieser Seite, um Ihren Link zu Ihrer Rezension teilen zu können.',
-	'wait-4'     => 'Vielen Dank für Ihre PayPal-Kontoinformationen. <BR>Wir werden innerhalb von 3 Tagen den vollen Kaufbetrag auf Ihr PayPal-Konto überweisen und Ihnen eine Bestätigung über unsere E-Mail-Adresse marketing@claimthegift.com schicken. Bitte achten Sie auf Ihre E-Mails und Zahlungen auf Ihr PayPal-Konto.  ',
-	'wait-6'     => 'Vielen Dank für das Hochladen Ihrer Bestellnummer. <BR>Bitte hinterlassen Sie Ihre Rezension innerhalb von 3 Tagen nach Erhalt des Produkts. Wenn Sie auf Probleme stoßen, kontaktieren Sie uns bitte über unsere offizielle E-Mail-Adresse marketing@claimthegift.com, damit wir Ihnen so schnell wie möglich helfen können.',
+	'wait-4'     => 'Vielen Dank für Ihre PayPal-Kontoinformationen. <BR>Wir werden innerhalb von 3 Tagen den vollen Kaufbetrag auf Ihr PayPal-Konto überweisen und Ihnen eine Bestätigung über unsere E-Mail-Adresse marketing@claimgiftsnow.com schicken. Bitte achten Sie auf Ihre E-Mails und Zahlungen auf Ihr PayPal-Konto.  ',
+	'wait-6'     => 'Vielen Dank für das Hochladen Ihrer Bestellnummer. <BR>Bitte hinterlassen Sie Ihre Rezension innerhalb von 3 Tagen nach Erhalt des Produkts. Wenn Sie auf Probleme stoßen, kontaktieren Sie uns bitte über unsere offizielle E-Mail-Adresse marketing@claimgiftsnow.com, damit wir Ihnen so schnell wie möglich helfen können.',
 	'wait-8'     => 'Vielen Dank für das Hochladen des Links zu Ihrer Rezension.
 Wir sind dankbar für Ihre Unterstützung und hoffen, dass Sie Ihr Produkt product_name mögen.
 Sie befinden sich auf unserer Liste für zukünftige Sonderaktionen und Geschenke!',
@@ -108,7 +108,7 @@ Regeln:<BR>
 	'home-a5'     => 'Sie können pro Bestellung nur ein Produkt auswählen.',
 	
 	'home-q6'     => 'Ich habe mich erfolgreich für das Event angemeldet, habe aber noch nicht das Geld für das Produkt erhalten. Wo kann ich um Hilfe bitten? ',
-	'home-a6'     => 'Bitte kontaktieren Sie uns über unsere offizielle E-Mail-Adresse marketing@claimthegift.com, damit wir uns so schnell wie möglich bei Ihnen melden können.',
+	'home-a6'     => 'Bitte kontaktieren Sie uns über unsere offizielle E-Mail-Adresse marketing@claimgiftsnow.com, damit wir uns so schnell wie möglich bei Ihnen melden können.',
 
 	'home-rule' 		  => 'Rules & Instructions',
 	'home-rule1' =>'
