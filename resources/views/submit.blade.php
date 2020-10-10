@@ -32,7 +32,7 @@
     <!-- END HEAD -->
 
     <body class=" page-sidebar-closed-hide-logo page-container-bg-solid page-content-white">
-	
+
 		<div class="portlet light">
 			<div class="portlet-body form">
 				<form id ="rsgform" role="form" class="form-horizontal" role="form" method="post" action="{{url(App::getLocale().'/getrsg')}}">
@@ -42,19 +42,19 @@
 					<h4 class="block iframe_block_h4">{!! str_ireplace('{{$customer_email}}',$customer_email,trans('custom.submit-7')) !!}</h4>
                     <div class="form-group">
 						<div class="col-md-8  col-md-offset-2 col-xs-8  col-xs-offset-2">
-							
+
 							<input type="hidden" name="id" value="{{$id}}">
 							<input type="hidden" name="customer_email" value="{{$customer_email}}">
 							<input type="text" class="form-control" name="review_url" placeholder="" required><span class="help-block"> <a href="/{{App::getLocale()}}/help#review" target="_parent">{!! trans('custom.how-get') !!}?</a> </span>
 						</div>
-					</div>     
-                
+					</div>
+
 				@elseif ($step==5)
 					<h4 class="block iframe_block_h4 text-left">{!! str_ireplace('{{$customer_email}}',$customer_email,trans('custom.submit-5')) !!}</h4>
 					<div class="form-group">
-						
+
 						<div class="col-md-8  col-md-offset-2 col-xs-8  col-xs-offset-2">
-							
+
 							<input type="hidden" name="id" value="{{$id}}">
 							<input type="hidden" name="customer_email" value="{{$customer_email}}">
 							<input type="text" class="form-control " name="amazon_order_id" placeholder="" required><span class="help-block"><a href="/{{App::getLocale()}}/help#order"  target="_blank"> {!! trans('custom.how-get') !!}?</a> </span>
@@ -64,7 +64,7 @@
 					<h4 class="block iframe_block_h4 text-left">{!! str_ireplace('customer_email',$customer_email,trans('custom.submit-3')) !!}</h4>
 					<div class="form-group">
 						<div class="col-md-8  col-md-offset-2 col-xs-8  col-xs-offset-2">
-							
+
 							<input type="hidden" name="id" value="{{$id}}">
 							<input type="hidden" name="customer_email" value="{{$customer_email}}">
 							<input type="email" class="form-control " name="customer_paypal_email" placeholder="" required>
@@ -86,36 +86,37 @@
 						<div class="col-md-8  col-md-offset-2 col-xs-8  col-xs-offset-2">
 							<input type="hidden" name="product_id" value="{{$product_id}}">
 							<input type="hidden" name="customer_email" value="{{$customer_email}}">
-							<input type="hidden" name="agree" value="1">		
+							<input type="hidden" name="agree" value="1">
 						</div>
 					</div>
-					
+
 				@else
 					<h4 class="block iframe_block_h4">{!! trans('custom.submit-0') !!}</h4>
 					<div class="form-group">
-						
+
 						<div class="col-md-8  col-md-offset-2 col-xs-8  col-xs-offset-2">
-							
+
 							<input type="hidden" name="product_id" value="{{$product_id}}">
 							<input type="email" class="form-control " name="customer_email" placeholder="" value="{{$customer_email}}" required>
+                            <input type="checkbox" style="margin-top: 10px" checked /> I accept the ClaimGiftsNow.com Terms and Policy. <a href="https://claimgiftsnow.com/privacy-statement" target="_blank">View detail</a>
 						</div>
 					</div>
 				@endif
-				</div>							
+				</div>
 				@if ($step==-5)
 				<div class="row">
 					<div class="col-md-8  col-md-offset-2 col-xs-8  col-xs-offset-2">
 
 						<button type="button" class="btn btn-circle default pull-right" id="disagree">{!! trans('custom.submit-disagree') !!}</button>
-						
+
 						<button type="submit" class="btn btn-circle red pull-right" id="buttonCD" disabled="disabled">{!! trans('custom.submit-agree') !!}</button>
-						
+
 					</div>
 				</div>
 				<script>
 					var second = 10;
 					var time = setInterval(function(){
-						$("#buttonCD").text('Agree'+((second>0)?'('+second+')':''));	
+						$("#buttonCD").text('Agree'+((second>0)?'('+second+')':''));
 						if(second>0){
 							//$("#buttonCD").val("Agree ("+second+")");
 							second--;
@@ -124,7 +125,7 @@
 							$("#buttonCD").removeAttr("disabled");
 							clearInterval(time);
 						}
-									
+
 					},1000);
 
 				</script>
@@ -133,22 +134,22 @@
 					<div class="col-md-8  col-md-offset-2 col-xs-8  col-xs-offset-2">
 
 						<button type="submit" class="btn btn-circle red pull-right">{!! trans('custom.submit-button') !!}</button>
-						
+
 					</div>
 				</div>
 				@endif
-				
-						
+
+
 				</form>
 			</div>
 		</div>
-		
+
 
 
         <!--[if lt IE 9]>
 <script src="/assets/global/plugins/respond.min.js"></script>
-<script src="/assets/global/plugins/excanvas.min.js"></script> 
-<script src="/assets/global/plugins/ie8.fix.min.js"></script> 
+<script src="/assets/global/plugins/excanvas.min.js"></script>
+<script src="/assets/global/plugins/ie8.fix.min.js"></script>
 <![endif]-->
         <!-- BEGIN CORE PLUGINS -->
         <script src="/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
@@ -159,7 +160,7 @@
         <script src="/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
         <!-- END CORE PLUGINS -->
 		<script>
-			
+
 			$(function() {
 				$("#rsgform").submit(function(e){
 				   var customer_email = $("input[name='customer_email']").val();
