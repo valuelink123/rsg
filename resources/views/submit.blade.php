@@ -77,6 +77,7 @@
 						<div class="col-md-8  col-md-offset-2 col-xs-8  col-xs-offset-2">
 							<input type="hidden" name="product_id" value="-1">
 							<input type="email" class="form-control " name="customer_email" placeholder="" value="{{$customer_email}}" required>
+                            <input type="checkbox" style="margin-top: 10px" checked /> I accept the ClaimGiftsNow.com Terms and Policy. <a href="https://claimgiftsnow.com/privacy-statement" target="_blank">View detail</a>
 						</div>
 					</div>
 				@elseif ($step==-5)
