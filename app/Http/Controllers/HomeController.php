@@ -34,8 +34,8 @@ class HomeController extends Controller
 			$validator = Validator::make(array('customer_email'=>$customer_email), array('customer_email'=>array('email')));
 			if ($validator->passes()) session()->put('customer_email',$customer_email);
 		}
-		
-		
+
+
 		$lang_arr=array(
 			'en'=>'www.amazon.com',
 			'gb'=>'www.amazon.co.uk',
@@ -46,7 +46,7 @@ class HomeController extends Controller
 			'jp'=>'www.amazon.co.jp',
 		);
 		$from = isset($_REQUEST['from']) ? $_REQUEST['from'] : '';
-		
+
 		$site = array_get($lang_arr,strtolower(App::getLocale()??'en'),'www.amazon.com');
 
 		$where_product = " and site = '".$site."' and created_at = '".$date."' and cast(rsg_products.sales_target_reviews as signed) - cast(rsg_products.requested_review as signed) > 0 and product_img !='' and order_status!=-1";
@@ -54,7 +54,7 @@ class HomeController extends Controller
 		if($site=='www.amazon.com'){
 			$where_product .= ' and price < 100 ';
  		}
-		$limit = 10;//默认显示10条数据
+		$limit = 20;//默认显示20条数据
 		if($site=='www.amazon.co.jp'){//日本站点限制显示置顶产品
 			$where_product .= ' and order_status = 1 ';
 			$limit = 4;//日本站点最多显示4条数据
@@ -62,7 +62,7 @@ class HomeController extends Controller
 
 		$sql = "
         SELECT rsg_products.id as id,(status_score*type_score*level_score*rating_score*review_score*days_score)  as score
-            from rsg_products  
+            from rsg_products
             left join (
 				select id,
 					case post_status
@@ -93,25 +93,25 @@ class HomeController extends Controller
 						WHEN 0 then 1
 						ELSE 0 END as rating_score,
 					if(site='www.amazon.com',
-						case 
+						case
 							WHEN number_of_reviews < 100 then 10
 							WHEN number_of_reviews >= 100 and number_of_reviews < 400 then 7
 							WHEN number_of_reviews >= 400 and number_of_reviews < 1000 then 4
 							WHEN number_of_reviews >= 1000 and number_of_reviews < 4000 then 1
 							WHEN number_of_reviews >= 4000 then 0
 							END,
-						case 
+						case
 							WHEN number_of_reviews < 40 then 10
 							WHEN number_of_reviews >= 40 and number_of_reviews < 100 then 7
 							WHEN number_of_reviews >= 100 and number_of_reviews < 400 then 4
-							WHEN number_of_reviews >= 400 and number_of_reviews <= 1000 then 1 
+							WHEN number_of_reviews >= 400 and number_of_reviews <= 1000 then 1
 							WHEN number_of_reviews > 1000 then 0
-							END 
-					)as review_score 
-				from rsg_products 
-				where created_at = '".$date."'  
-			) as rsg_score on rsg_score.id=rsg_products.id 
-			where 1 = 1 {$where_product} 
+							END
+					)as review_score
+				from rsg_products
+				where created_at = '".$date."'
+			) as rsg_score on rsg_score.id=rsg_products.id
+			where 1 = 1 {$where_product}
 			{$orderby} limit 10";
 		$_products = DB::select($sql);
 		$ids = array();
@@ -132,7 +132,7 @@ class HomeController extends Controller
 		}
 		return view('home',['customer_email'=>$customer_email,'products'=>$products,'from'=>$from,'user_id'=>$userid]);
     }
-	
+
 	public function getrsg(Request $request){
 		$product_id = intval($request->input('product_id'));
 		$agree = intval($request->input('agree'));
@@ -140,12 +140,12 @@ class HomeController extends Controller
 		$user_id = intval($request->input('user_id'));
 
 		if($user_id) session()->put('user_id',$user_id);
-		
+
 		if(session()->get('customer_email')){
 			$customer_email = session()->get('customer_email');
 		}
 		$request_id = $request->input('id');
-		$v_v = compact('product_id','customer_email');	
+		$v_v = compact('product_id','customer_email');
 		$validator = Validator::make(array('customer_email'=>$customer_email), array('customer_email'=>array('email')));
 		if ($validator->passes())
 		{
@@ -163,10 +163,10 @@ class HomeController extends Controller
 				echo "<script>parent.location.href='/".$customer_email."';</script>";
 				die();
 			}
-			
+
 			$review_url = $request->input('review_url');
 			if($review_url && $request_id){
-				
+
 				$result = RsgRequest::where('id',$request_id)->where('customer_email',$customer_email)->where('step',7)
 				->update(['step'=>8,'review_url'=>$review_url]);
 				if($result) self::mailchimp($customer_email,'RSG Check Review Url',[
@@ -174,7 +174,7 @@ class HomeController extends Controller
 					'status'        => 'subscribed',
 					'merge_fields' => ['REVIEWURL'=>$review_url],
 				]);
-				
+
 			}
 			$amazon_order_id = $request->input('amazon_order_id');
 			if($amazon_order_id && $request_id){
@@ -186,7 +186,7 @@ class HomeController extends Controller
 					'merge_fields' => ['ORDERID'=>$amazon_order_id],
 				]);
 			}
-			
+
 			$customer_paypal_email = $request->input('customer_paypal_email');
 			if($customer_paypal_email && $request_id){
 				$result = RsgRequest::where('id',$request_id)->where('customer_email',$customer_email)->where('step',3)
@@ -197,8 +197,8 @@ class HomeController extends Controller
 					'merge_fields' => ['PAYPAL'=>$customer_paypal_email],
 				]);
 			}
-			
-			
+
+
 			if($product_id){
                 $crmRsgStatusArr = getCrmRsgStatusArr();
                 $rsgStatus = DB::select('SELECT rsg_status, rsg_status_explain from client_info join client on client.id = client_info.client_id and client_info.email = "'.$customer_email.'"');
@@ -237,7 +237,7 @@ class HomeController extends Controller
 						'user_id' => session()->get('user_id'),
 						'processor' => (session()->get('user_id'))??0,//添加请求数据的时候指定负责人为VOP系统的user_id
 					);
-					
+
 					$data = RsgRequest::firstOrCreate(['customer_email'=>$customer_email], $insertData );
 					$data = array_merge($data->toArray(),self::getProduct($product_id));
 					if($data) self::mailchimp($customer_email,'RSG Join',[
@@ -257,9 +257,9 @@ class HomeController extends Controller
 					return view('error',$v_v); //产品数据库操作异常 不可申请
 					die();
 				}
-				
+
 			}
-			
+
 			// 查看邮箱有无正在进行的任务
 			$current_task = RsgRequest::where('customer_email',$customer_email)->first();
 			if($current_task){
@@ -277,35 +277,35 @@ class HomeController extends Controller
 				return view('error',$v_v); //无任务
 				die();
 			}
-			
+
 		}else{
 			if($product_id){
 				$v_v['step']='0';
 			}else{
-				$v_v['step']='-4';		
+				$v_v['step']='-4';
 			}
 			return view('submit',$v_v); //提交邮箱
 			die();
 		}
     }
-	
+
 	public function getProduct($product_id){
 		return RsgProduct::where('id',$product_id)->first(['product_name','product_img','keyword','position','page'])->toArray();
 	}
-	
+
 	public function help(){
 		return view('help');
 	}
-	
+
 	public function notice(){
 		return view('notice');
 	}
-	
+
 	public function mailchimp($customer_email,$tag,$args){
 		$MailChimp = new MailChimp('d013911df0560a3001215d16c7bc028a-us8');
 		//$MailChimp->verify_ssl=false;
 		$list_id = '6aaf7d9691';
-		$subscriber_hash = $MailChimp->subscriberHash($customer_email);	
+		$subscriber_hash = $MailChimp->subscriberHash($customer_email);
 		$MailChimp->put("lists/$list_id/members/$subscriber_hash", $args);
 		if (!$MailChimp->success()) {
 			die($MailChimp->getLastError());
