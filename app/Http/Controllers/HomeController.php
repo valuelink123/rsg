@@ -112,7 +112,7 @@ class HomeController extends Controller
 				where created_at = '".$date."'
 			) as rsg_score on rsg_score.id=rsg_products.id
 			where 1 = 1 {$where_product}
-			{$orderby} limit 10";
+			{$orderby} limit {$limit}";
 		$_products = DB::select($sql);
 		$ids = array();
 		//取出前十条数据的id
