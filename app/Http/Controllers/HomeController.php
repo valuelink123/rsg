@@ -51,9 +51,9 @@ class HomeController extends Controller
 
 		$where_product = " and site = '".$site."' and created_at = '".$date."' and cast(rsg_products.sales_target_reviews as signed) - cast(rsg_products.requested_review as signed) > 0 and product_img !='' and order_status!=-1";
 		$orderby = " order by rsg_products.order_status desc,score desc,id desc ";
-		if($site=='www.amazon.com'){
-			$where_product .= ' and price < 100 ';
- 		}
+//		if($site=='www.amazon.com'){产品的展示去掉价格小于100的限制，
+//			$where_product .= ' and price < 100 ';
+// 		}
 		$limit = 20;//默认显示20条数据
 		if($site=='www.amazon.co.jp'){//日本站点限制显示置顶产品
 			$where_product .= ' and order_status = 1 ';
