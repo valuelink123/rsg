@@ -29,7 +29,11 @@ Route::Post('/getrsg', 'HomeController@getrsg')->name('getrsg');
 
 Route::get('/product/detail', 'ProductController@detail')->name('detail');
 
+/*
+ * 弹窗插件模块
+ */
+Route::match(['post','get'],'/api/getCode', 'ApiController@getCode');//得到验证码方法，
+
+
 //这一行代码一定要放在最下面。若有get路由放在它后面，则这些get路由不能正常工作。
 Route::get('/{customer_email?}', 'HomeController@index')->name('home');
-
-
