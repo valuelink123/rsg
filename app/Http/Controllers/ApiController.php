@@ -28,6 +28,7 @@ class ApiController extends Controller
 		header('Access-Control-Allow-Origin:*');
 		session_start();//开启session记录验证码数据
 		$userId = isset($_REQUEST['userId']) && $_REQUEST['userId'] ? $_REQUEST['userId'] : 0;
+        $pid = isset($_REQUEST['pid']) && $_REQUEST['pid'] ? $_REQUEST['pid'] : 0;
 		$sessionId = isset($_REQUEST['sessionId']) && $_REQUEST['sessionId'] ? $_REQUEST['sessionId'] : 0;
 //		$pid=$_REQUEST['PID'];
 		session_id($sessionId);//启用传过来的session_id，此session_id是访问alertRemind接口返回的session_id,这样每次存放code都是存放在同一个sessionid下，不然的话在不同窗口下启用的session_id是不一样的，会导致数据错乱
@@ -48,7 +49,7 @@ class ApiController extends Controller
 		for ($i = 0; $i < $num; $i++) {
 			$code .= $str[mt_rand(0, strlen($str)-1)];
 		}
-		$_SESSION["VerifyCode_".$userId]=$code;
+		$_SESSION["VerifyCode_".$userId.'_'.$pid]=$code;
 
 		//创建验证码画布
 		$im = imagecreatetruecolor($width, $height);
@@ -61,7 +62,7 @@ class ApiController extends Controller
 
 		imagefilledrectangle($im, 0, 0, $width, $height, $back_color);
 
-
+        $this->saveOperationLog('getCode', 0, array('code'=>$code,'session_key'=>"VerifyCode_".$userId.'_'.$pid,'session_code'=>$_SESSION["VerifyCode_".$userId.'_'.$pid],'userId'=>$userId,'sessionId'=>$sessionId));//操作插入日志表中
 		// 画干扰线
 		for($i = 0;$i < 5;$i++) {
 			$font_color = imagecolorallocate($im, mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 255));

@@ -6,6 +6,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use DB;
 
 class Controller extends BaseController
 {
@@ -24,4 +25,22 @@ class Controller extends BaseController
 		}
 		return $todayDate;
 	}
+
+    //存日志
+    function saveOperationLog(string $table = NULL, int $primary_id = 0 , array $inputData = array()){
+        $userId = isset($inputData['userId']) && $inputData['userId'] ? $inputData['userId'] : 0;
+        DB::table('operation_log')->insert(
+            array(
+                'user_id'=> $userId,
+                'path'=>$_SERVER["REQUEST_URI"],
+                'method'=>$_SERVER['REQUEST_METHOD'],
+                'ip'=>$_SERVER["REMOTE_ADDR"],
+                'table'=>$table,
+                'primary_id'=>$primary_id,
+                'input'=>json_encode(empty($inputData)?$_REQUEST:$inputData),
+                'created_at'=>date('Y-m-d H:i:s'),
+                'updated_at'=>date('Y-m-d H:i:s'),
+            )
+        );
+    }
 }
