@@ -28,9 +28,8 @@ class ApiController extends Controller
 		header('Access-Control-Allow-Origin:*');
 		session_start();//开启session记录验证码数据
 		$userId = isset($_REQUEST['userId']) && $_REQUEST['userId'] ? $_REQUEST['userId'] : 0;
-        $pid = isset($_REQUEST['pid']) && $_REQUEST['pid'] ? $_REQUEST['pid'] : 0;
 		$sessionId = isset($_REQUEST['sessionId']) && $_REQUEST['sessionId'] ? $_REQUEST['sessionId'] : 0;
-//		$pid=$_REQUEST['PID'];
+        $getCodeType = isset($_REQUEST['getCodeType']) && $_REQUEST['getCodeType'] ? $_REQUEST['getCodeType'] : 0;
 		session_id($sessionId);//启用传过来的session_id，此session_id是访问alertRemind接口返回的session_id,这样每次存放code都是存放在同一个sessionid下，不然的话在不同窗口下启用的session_id是不一样的，会导致数据错乱
 		//获取验证码
 		$num = 4;
@@ -42,15 +41,24 @@ class ApiController extends Controller
 
 		//设置验证码字符集合
 		$str = "23456789abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVW";
-		//保存获取的验证码
-		$code = '';
+        $code = '';//保存获取的验证码
+        //查日志表，查出最近一次的code值,刷新操作除外
+        if($getCodeType=='') {
+            $recentCode = DB::table('operation_log')->where('user_id', $userId)->where('table', 'getCode')->orderBy('created_at', 'desc')->first();
+            if ($recentCode && $recentCode->input) {
+                $inputInfo = json_decode($recentCode->input);
+                $code = isset($inputInfo->code) ? $inputInfo->code : '';
+            }
+        }
 
-		//随机选取字符
-		for ($i = 0; $i < $num; $i++) {
-			$code .= $str[mt_rand(0, strlen($str)-1)];
-		}
-		$_SESSION["VerifyCode_".$userId.'_'.$pid]=$code;
-
+		if(empty($code)){
+            //随机选取字符
+            for ($i = 0; $i < $num; $i++) {
+                $code .= $str[mt_rand(0, strlen($str)-1)];
+            }
+        }
+        $_SESSION["VerifyCode_".$userId]=$code;
+        $this->saveOperationLog('getCode', 0, array('code'=>$code,'session_key'=>"VerifyCode_".$userId,'userId'=>$userId,'sessionId'=>$sessionId));//操作插入日志表中
 		//创建验证码画布
 		$im = imagecreatetruecolor($width, $height);
 
@@ -61,8 +69,6 @@ class ApiController extends Controller
 		$text_color = imagecolorallocate($im, mt_rand(100, 255), mt_rand(100, 255), mt_rand(100, 255));
 
 		imagefilledrectangle($im, 0, 0, $width, $height, $back_color);
-
-        $this->saveOperationLog('getCode', 0, array('code'=>$code,'session_key'=>"VerifyCode_".$userId.'_'.$pid,'session_code'=>$_SESSION["VerifyCode_".$userId.'_'.$pid],'userId'=>$userId,'sessionId'=>$sessionId));//操作插入日志表中
 		// 画干扰线
 		for($i = 0;$i < 5;$i++) {
 			$font_color = imagecolorallocate($im, mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 255));
