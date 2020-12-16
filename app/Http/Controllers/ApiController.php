@@ -25,7 +25,8 @@ class ApiController extends Controller
 	 */
 	public function getCode()
 	{
-		header('Access-Control-Allow-Origin:*');
+        header('Access-Control-Allow-Origin:*');
+
 		session_start();//开启session记录验证码数据
 		$userId = isset($_REQUEST['userId']) && $_REQUEST['userId'] ? $_REQUEST['userId'] : 0;
 		$sessionId = isset($_REQUEST['sessionId']) && $_REQUEST['sessionId'] ? $_REQUEST['sessionId'] : 0;
@@ -58,7 +59,7 @@ class ApiController extends Controller
             }
         }
         $_SESSION["VerifyCode_".$userId]=$code;
-        $this->saveOperationLog('getCode', 0, array('code'=>$code,'session_key'=>"VerifyCode_".$userId,'userId'=>$userId,'sessionId'=>$sessionId));//操作插入日志表中
+        $this->saveOperationLog('getCode', 0, array('code'=>$code,'session_key'=>"VerifyCode_".$userId,'userId'=>$userId,'sessionId'=>session_id()));//操作插入日志表中
 		//创建验证码画布
 		$im = imagecreatetruecolor($width, $height);
 
@@ -97,5 +98,35 @@ class ApiController extends Controller
 		imagepng($im);
 		imagedestroy($im);
 	}
+
+    /*
+     * 验证填写的验证码是否正确
+     * 验证验证码是否输入正确
+     */
+    public function verifyCode()
+    {
+        header('Access-Control-Allow-Origin:*');
+        session_start();//开启session获取验证码数据
+        $userId = isset($_REQUEST['userId']) && $_REQUEST['userId'] ? $_REQUEST['userId'] : 0;
+        $sessionId = isset($_REQUEST['sessionId']) && $_REQUEST['sessionId'] ? $_REQUEST['sessionId'] : 0;
+        $code = isset($_REQUEST['code']) && $_REQUEST['code'] ? trim($_REQUEST['code']) : '';
+        session_id($sessionId);
+        $recentCode = DB::table('operation_log')->where('user_id', $userId)->where('table', 'getCode')->orderBy('created_at', 'desc')->first();
+        $trueCode = '';
+        if ($recentCode && $recentCode->input) {
+            $inputInfo = json_decode($recentCode->input);
+            $trueCode = isset($inputInfo->code) ? $inputInfo->code : '';
+        }
+//        $trueCode = isset($_SESSION["VerifyCode_".$userId]) ? $_SESSION["VerifyCode_".$userId] : '';
+        $result['status'] = 0;
+        $result['code'] = $code;
+        $result['truecode'] = $trueCode;
+        if($code == $trueCode){
+            $result['status'] = 1;
+        }
+        $result['userId'] = $userId;
+        $this->saveOperationLog('verifyCode', 0, array('session'=>$_SESSION,'userId'=>$userId,'code'=>$code,'truecode'=>$trueCode,'sessionkey'=>"VerifyCode_".$userId,'sessionid'=>session_id()));//操作插入日志表中
+        echo json_encode($result);
+    }
 
 }
