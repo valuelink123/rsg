@@ -44,8 +44,9 @@ class ApiController extends Controller
 		$str = "23456789abcdefghijkmnpqrstuvwxyzABCDEFGHIJKLMNPQRSTUVW";
         $code = '';//保存获取的验证码
         //查日志表，查出最近一次的code值,刷新操作除外
+        $date = date('Y-m-d H:i:s',time()-60*5);//5分钟前的时间,最近5分钟没有产生code就生成新的code
         if($getCodeType=='') {
-            $recentCode = DB::table('operation_log')->where('user_id', $userId)->where('table', 'getCode')->orderBy('created_at', 'desc')->first();
+            $recentCode = DB::table('operation_log')->where('user_id', $userId)->where('table', 'getCode')->where('created_at','>',$date)->orderBy('created_at', 'desc')->first();
             if ($recentCode && $recentCode->input) {
                 $inputInfo = json_decode($recentCode->input);
                 $code = isset($inputInfo->code) ? $inputInfo->code : '';
