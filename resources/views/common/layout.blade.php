@@ -30,6 +30,14 @@
     <link rel="shortcut icon" href="favicon.ico"/>
 </head>
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-498N6KM334"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-498N6KM334');
+</script>
 
 <script src="//code.jivosite.com/widget/wrhRle2qVZ" async></script>
 <script type="text/template" id="modal-template">
