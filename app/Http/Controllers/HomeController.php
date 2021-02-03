@@ -169,33 +169,33 @@ class HomeController extends Controller
 
 				$result = RsgRequest::where('id',$request_id)->where('customer_email',$customer_email)->where('step',7)
 				->update(['step'=>8,'review_url'=>$review_url]);
-				if($result) self::mailchimp($customer_email,'RSG Check Review Url',[
-					'email_address' => $customer_email,
-					'status'        => 'subscribed',
-					'merge_fields' => ['REVIEWURL'=>$review_url],
-				]);
+//				if($result) self::mailchimp($customer_email,'RSG Check Review Url',[
+//					'email_address' => $customer_email,
+//					'status'        => 'subscribed',
+//					'merge_fields' => ['REVIEWURL'=>$review_url],
+//				]);
 
 			}
 			$amazon_order_id = $request->input('amazon_order_id');
 			if($amazon_order_id && $request_id){
 				$result =RsgRequest::where('id',$request_id)->where('customer_email',$customer_email)->where('step',5)
 				->update(['step'=>6,'amazon_order_id'=>$amazon_order_id]);
-				if($result) self::mailchimp($customer_email,'RSG Check Purchase',[
-					'email_address' => $customer_email,
-					'status'        => 'subscribed',
-					'merge_fields' => ['ORDERID'=>$amazon_order_id],
-				]);
+//				if($result) self::mailchimp($customer_email,'RSG Check Purchase',[
+//					'email_address' => $customer_email,
+//					'status'        => 'subscribed',
+//					'merge_fields' => ['ORDERID'=>$amazon_order_id],
+//				]);
 			}
 
 			$customer_paypal_email = $request->input('customer_paypal_email');
 			if($customer_paypal_email && $request_id){
 				$result = RsgRequest::where('id',$request_id)->where('customer_email',$customer_email)->where('step',3)
 				->update(['step'=>4,'customer_paypal_email'=>$customer_paypal_email]);
-				if($result) self::mailchimp($customer_email,'RSG Check Paypal',[
-					'email_address' => $customer_email,
-					'status'        => 'subscribed',
-					'merge_fields' => ['PAYPAL'=>$customer_paypal_email],
-				]);
+//				if($result) self::mailchimp($customer_email,'RSG Check Paypal',[
+//					'email_address' => $customer_email,
+//					'status'        => 'subscribed',
+//					'merge_fields' => ['PAYPAL'=>$customer_paypal_email],
+//				]);
 			}
 
 
@@ -240,16 +240,16 @@ class HomeController extends Controller
 
 					$data = RsgRequest::firstOrCreate(['customer_email'=>$customer_email], $insertData );
 					$data = array_merge($data->toArray(),self::getProduct($product_id));
-					if($data) self::mailchimp($customer_email,'RSG Join',[
-						'email_address' => $customer_email,
-						'status'        => 'subscribed',
-						'merge_fields' => ['PROIMG'=>$data['product_img'],'PRONAME'=>$data['product_name'],'PROKEY'=>$data['keyword'],'PROPAGE'=>$data['page'],'PROPOS'=>$data['position']],
-					]);
-					if($data['step']==3) self::mailchimp($customer_email,'RSG Submit Paypal',[
-						'email_address' => $customer_email,
-						'status'        => 'subscribed',
-						'merge_fields' => ['PROIMG'=>$data['product_img'],'PRONAME'=>$data['product_name'],'PROKEY'=>$data['keyword'],'PROPAGE'=>$data['page'],'PROPOS'=>$data['position']],
-					]);
+//					if($data) self::mailchimp($customer_email,'RSG Join',[
+//						'email_address' => $customer_email,
+//						'status'        => 'subscribed',
+//						'merge_fields' => ['PROIMG'=>$data['product_img'],'PRONAME'=>$data['product_name'],'PROKEY'=>$data['keyword'],'PROPAGE'=>$data['page'],'PROPOS'=>$data['position']],
+//					]);
+//					if($data['step']==3) self::mailchimp($customer_email,'RSG Submit Paypal',[
+//						'email_address' => $customer_email,
+//						'status'        => 'subscribed',
+//						'merge_fields' => ['PROIMG'=>$data['product_img'],'PRONAME'=>$data['product_name'],'PROKEY'=>$data['keyword'],'PROPAGE'=>$data['page'],'PROPOS'=>$data['position']],
+//					]);
 					return view(($data['step']==3)?'submit':'wait',$data); //等待申请审核
 					die();
 				}else{
@@ -301,23 +301,23 @@ class HomeController extends Controller
 		return view('notice');
 	}
 
-	public function mailchimp($customer_email,$tag,$args){
-		$MailChimp = new MailChimp('d013911df0560a3001215d16c7bc028a-us8');
-		//$MailChimp->verify_ssl=false;
-		$list_id = '6aaf7d9691';
-		$subscriber_hash = $MailChimp->subscriberHash($customer_email);
-		$MailChimp->put("lists/$list_id/members/$subscriber_hash", $args);
-		if (!$MailChimp->success()) {
-			die($MailChimp->getLastError());
-		}
-		$MailChimp->post("lists/$list_id/members/$subscriber_hash/tags", [
-			'tags'=>[
-			['name' => $tag,
-			'status' => 'active',]
-			]
-		]);
-		if (!$MailChimp->success()) {
-			die($MailChimp->getLastError());
-		}
-	}
+//	public function mailchimp($customer_email,$tag,$args){
+//		$MailChimp = new MailChimp('d013911df0560a3001215d16c7bc028a-us8');
+//		//$MailChimp->verify_ssl=false;
+//		$list_id = '6aaf7d9691';
+//		$subscriber_hash = $MailChimp->subscriberHash($customer_email);
+//		$MailChimp->put("lists/$list_id/members/$subscriber_hash", $args);
+//		if (!$MailChimp->success()) {
+//			die($MailChimp->getLastError());
+//		}
+//		$MailChimp->post("lists/$list_id/members/$subscriber_hash/tags", [
+//			'tags'=>[
+//			['name' => $tag,
+//			'status' => 'active',]
+//			]
+//		]);
+//		if (!$MailChimp->success()) {
+//			die($MailChimp->getLastError());
+//		}
+//	}
 }
