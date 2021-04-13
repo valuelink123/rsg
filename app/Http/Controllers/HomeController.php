@@ -54,6 +54,10 @@ class HomeController extends Controller
 //		if($site=='www.amazon.com'){产品的展示去掉价格小于100的限制，
 //			$where_product .= ' and price < 100 ';
 // 		}
+        //B08P4MBK17,B08Z7FYB59,B08RZ3GSKH这3个ASIN 在RSG官网屏蔽到4月20日,4月20号也不显示
+        if($date<='2021-4-20'){
+            $where_product .= " and asin not IN('B08P4MBK17','B08Z7FYB59','B08RZ3GSKH')";
+        }
 		$limit = 20;//默认显示20条数据
 		if($site=='www.amazon.co.jp'){//日本站点限制显示置顶产品
 			$where_product .= ' and order_status = 1 ';
