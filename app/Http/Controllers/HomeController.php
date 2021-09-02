@@ -304,6 +304,30 @@ class HomeController extends Controller
 		return view('notice');
 	}
 
+    public function terms(Request $request){
+        $customer_email = $request->route('customer_email');
+        if(session()->get('customer_email')){
+            $customer_email = session()->get('customer_email');
+        }else{
+            $validator = Validator::make(array('customer_email'=>$customer_email), array('customer_email'=>array('email')));
+            if ($validator->passes()) session()->put('customer_email',$customer_email);
+        }
+        $from = isset($_REQUEST['from']) ? $_REQUEST['from'] : '';
+        return view('terms',['from'=>$from,'customer_email'=>$customer_email]);
+    }
+
+    public function private_policy(Request $request){
+        $customer_email = $request->route('customer_email');
+        if(session()->get('customer_email')){
+            $customer_email = session()->get('customer_email');
+        }else{
+            $validator = Validator::make(array('customer_email'=>$customer_email), array('customer_email'=>array('email')));
+            if ($validator->passes()) session()->put('customer_email',$customer_email);
+        }
+        $from = isset($_REQUEST['from']) ? $_REQUEST['from'] : '';
+        return view('private_policy',['from'=>$from,'customer_email'=>$customer_email]);
+    }
+
 //	public function mailchimp($customer_email,$tag,$args){
 //		$MailChimp = new MailChimp('d013911df0560a3001215d16c7bc028a-us8');
 //		//$MailChimp->verify_ssl=false;

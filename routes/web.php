@@ -29,6 +29,9 @@ Route::Post('/getrsg', 'HomeController@getrsg')->name('getrsg');
 
 Route::get('/product/detail', 'ProductController@detail')->name('detail');
 
+Route::get('/terms', 'HomeController@terms')->name('terms');
+Route::get('/private_policy', 'HomeController@private_policy')->name('private_policy');
+
 /*
  * 弹窗插件模块
  */
