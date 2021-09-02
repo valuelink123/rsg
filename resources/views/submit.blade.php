@@ -2,12 +2,19 @@
 
 <html lang="en">
     <head>
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-MLVCDBW');</script>
+        <!-- End Google Tag Manager -->
         <meta charset="utf-8" />
         <title>RSG</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content=""  name="description" />
-		
+
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
         <link href="/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -18,7 +25,7 @@
         <!-- BEGIN THEME GLOBAL STYLES -->
         <link href="/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
         <link href="/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
-		
+
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
         <link href="/assets/pages/css/about.min.css" rel="stylesheet" type="text/css" />
@@ -32,6 +39,10 @@
     <!-- END HEAD -->
 
     <body class=" page-sidebar-closed-hide-logo page-container-bg-solid page-content-white">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MLVCDBW"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
 		<div class="portlet light">
 			<div class="portlet-body form">
