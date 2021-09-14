@@ -5,7 +5,7 @@
 <div class="row margin-bottom-20 about-header">
     <!-- BEGIN PAGE TITLE-->
     <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 " >
-        <div class="col-md-3 col-sm-2 col-xs-2 col-lg-1 " style="float:left;"><img class="logo" src="/assets/pages/img/logo.png"></div>
+{{--        <div class="col-md-3 col-sm-2 col-xs-2 col-lg-1 " style="float:left;"><img class="logo" src="/assets/pages/img/logo.png"></div>--}}
         <div class="col-md-9 col-sm-10 col-xs-10 col-lg-11 margin-top-30 top-menu" style="float:right;">
             <div class="col-xs-7 col-sm-3 col-md-3 col-lg-1" style="float:right;margin-bottom:5px;">
                 <select class="form-control btn btn-circle red btn-outline" onChange="location.href='/'+this.value" >
