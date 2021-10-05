@@ -55,7 +55,7 @@ class HomeController extends Controller
 //			$where_product .= ' and price < 100 ';
 // 		}
         //屏蔽不显示的asin
-        $where_product .= " and asin not IN('B08Z75G16X','B08RZ3GSKH','B08Z7TX44T','B08Z7FYB59','B08RDLLSF2','B091KVP7Z7','B08VND3ZZT','B091L3DZ79','B091KVP7Z7','B098WVVXB6','B096MLDJGC','B09835YF83','B097YBBK96')";
+        $where_product .= " and asin not IN('B08Z75G16X','B08RZ3GSKH','B08Z7TX44T','B08Z7FYB59','B08RDLLSF2','B091KVP7Z7','B08VND3ZZT','B091L3DZ79','B091KVP7Z7','B098WVVXB6','B096MLDJGC','B09835YF83','B097YBBK96','B095PQHGKX')";
 
 		$limit = 20;//默认显示20条数据
 		if($site=='www.amazon.co.jp'){//日本站点限制显示置顶产品
