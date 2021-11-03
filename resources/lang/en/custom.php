@@ -36,7 +36,8 @@ Thanks for your support.',
 	'help-r-1'     => 'Step 1: Log in your Amazon account and click on your profile picture to go to your profile.',
 	'help-r-2'     => 'Step 2: Locate your review and click &#8220;See full review&#8221; ',
 	'help-r-3'     => 'Step 3: Copy the URL on this page to have a shareable link to your full review. ',
-	'wait-4'     => 'Thanks for filling in your Paypal account information.<BR> We will transfer the purchasing deposit to you within 3 days and send a notification message to you from marketing@claimgiftsnow.com. Please keep an eye on your email inbox and Paypal account in the meantime. ',
+	'wait-4'     => 'Thanks for filling your PayPal account information.<BR>Our agents will contact you within 2 days and send the notification message to you.Please keep an eye on your email inbox.Sometime the email may in the spam floder by mistake, please transfer the email to inbox.',
+
 	'wait-6'     => 'Thanks for uploading your Order ID. <BR>Please leave a review within 3 days of receiving the product. If you encounter any problems, simply contact support at our official email:marketing@claimgiftsnow.com, and we will assist you immediately.',
 	'wait-8'     => 'Thanks for uploading your review link.<BR>
 We’re grateful to have you as our customer and hope you enjoy your product_name.
@@ -92,19 +93,19 @@ Rules:<BR>
 	'home-s3'     => 'Share Your Real Experiences',
 	'home-q1'     => 'I live in Europe, can I participate in this event?',
 	'home-a1'     => 'We are hosting this promotional event in several other major european countries and Japan. Check the menu in the upper-right hand corner of the screen to see if your country is available and go to your country\'s submission website.',
-	
+
 	'home-q2'     => 'The application quota of the product I want is filled, can I get it anyway?',
 	'home-a2'     => 'The daily quota for each product is fixed. However, you can try to apply for it the following day.',
-	
+
 	'home-q3'     => 'I successfully applied for the promotion but did not receive the funds or product. Who can I ask for help?',
 	'home-a3'     => 'Simply contact us through the live chat or messenger. If there is no agent available for the moment, you can send an email to marketing@claimgiftsnow.com, we will respond as soon as possible.',
-	
+
 	'home-q4'     => 'I don’t have a Paypal account, can I participate in this event?',
 	'home-a4'     => 'We apologize, but we are only able to transfer the funds for purchase via Paypal.',
-	
+
 	'home-q5'     => 'Can I participate in this event multiple times?',
 	'home-a5'     => 'If you want to participate again, please follow us on our Facebook Page, and message us your Amazon Profile ID, we will invite you for further free testing.',
-	
+
 	'home-q6'     => 'How many free products can I apply for at one time?',
 	'home-a6'     => 'Only one product can be selected at a time',
 
@@ -125,5 +126,5 @@ Rules:<BR>
 6.Any activity found to be in violation of these rules will result in the participant being placed on our blacklist and forbidden from participating in any similar promotional activities in the future.<BR>
 7.CTG reserves the right of final decision.<BR>
 ',
-	
+
 ];
