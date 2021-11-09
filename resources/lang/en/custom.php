@@ -36,7 +36,7 @@ Thanks for your support.',
 	'help-r-1'     => 'Step 1: Log in your Amazon account and click on your profile picture to go to your profile.',
 	'help-r-2'     => 'Step 2: Locate your review and click &#8220;See full review&#8221; ',
 	'help-r-3'     => 'Step 3: Copy the URL on this page to have a shareable link to your full review. ',
-	'wait-4'     => 'Thanks for filling your PayPal account information.<BR>Our agents will contact you within 2 days and send the notification message to you.Please keep an eye on your email inbox.Sometime the email may in the spam floder by mistake, please transfer the email to inbox.',
+	'wait-4'     => 'We will transfer the funds to you upon verifying your account. <BR>You can also send us a notification to marketing@claimgiftsnow.com to follow up on your request.',
 
 	'wait-6'     => 'Thanks for uploading your Order ID. <BR>Please leave a review within 3 days of receiving the product. If you encounter any problems, simply contact support at our official email:marketing@claimgiftsnow.com, and we will assist you immediately.',
 	'wait-8'     => 'Thanks for uploading your review link.<BR>
